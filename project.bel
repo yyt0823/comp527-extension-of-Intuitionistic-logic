@@ -1,0 +1,242 @@
+i : type. % Type of individuals; we leave elements abstract.
+
+LF o : type =  % formulas
+  | ⊃ : o -> o -> o
+  | ⊤ : o
+  | ⊥ : o
+  | ∧   : o → o → o
+  | ∨   : o → o → o
+  | ¬  : o -> o
+  | ∀  : (i → o) → o     % ∀ \x. A(x) ⊃ B    ∀ \x. A(x) ⊃ B(x) 
+  | ∃  : (i → o) → o     % ∃ \x. A(x) ⊃ B    ∃ \x. A(x) ⊃ B(x) 
+;
+
+--prefix ¬ 10. 
+--infix ∧ 6 right. 
+--infix ∨ 5 right. 
+--infix ⊃ 4 right.
+--prefix ∀ 8. 
+--prefix ∃ 8.
+
+
+LF nd : o -> type = 
+  | ⊃I : (nd A -> nd B)
+	 -> nd (A ⊃ B)
+	       
+  | ⊃E : nd (A ⊃ B) -> nd A 			  
+	 -> nd B
+	       
+  | ¬I : ({p:o} nd A -> nd p)
+	 -> nd (¬ A)
+	       
+  | ¬E : nd (¬ A) -> nd A
+	 -> nd C
+	       
+  | ∧I : nd A → nd B
+	 → nd  (A ∧ B)
+	       
+  | ∧El : nd (A ∧ B)
+	  → nd A
+
+  | ∧Er : nd (A ∧ B)
+	  → nd B
+
+  | ∨Il : nd A
+	  → nd (A ∨ B)
+  | ∨Ir : nd B → nd (A ∨ B)
+  | ∨E  :  nd (A ∨ B)
+        → (nd A → nd C)
+        → (nd B → nd C)        
+        → nd C
+  | ⊤I : nd ⊤
+  | ⊥E : nd ⊥
+         → nd C
+;
+
+	 
+LF knd : o → type = 
+  | ⊃kI : (knd A → knd B)
+         → knd (A ⊃ B)
+  
+  | ⊃kE : knd (A ⊃ B) → knd A
+          → knd B
+  
+  | ∧kI   : knd A → knd B
+         → knd (A ∧ B)
+  
+  | ∧kEl  : knd (A ∧ B)
+         → knd A
+  
+  | ∧kEr  : knd (A ∧ B)
+         → knd B
+  
+  | ∨kIl  : knd A
+         → knd (A ∨ B)
+  
+  | ∨kIr  : knd B
+         → knd (A ∨ B)
+  
+  | ∨kE   : knd (A ∨ B)
+         → (knd A → knd C)
+         → (knd B → knd C)
+         → knd C
+  
+  | ⊤kI   : knd ⊤
+  
+  | ⊥kE : knd ⊥
+         → knd C
+  
+  | ¬kI   : ({p:o} knd A → knd p)
+            → knd (¬ A)
+				     
+  | ¬¬kE  : knd (¬ (¬ A))
+            → knd A
+;
+
+LF ktrans : o -> o -> type =
+  | ktrans_∧I : ktrans A A* -> ktrans B B* -> 
+               ktrans (A ∧ B) (¬ (¬ (A* ∧ B*)))
+
+  | ktrans_∧El : ktrans (A ∧ B) (¬ (¬ (A* ∧ B*))) ->
+                 ktrans A A*
+
+  | ktrans_∧Er : ktrans (A ∧ B) (¬ (¬ (A* ∧ B*))) ->
+                 ktrans B B*
+
+  | ktrans_⊃I : ktrans A A* -> ktrans B B* -> 
+               ktrans (A ⊃ B) (¬ (¬ (A* ⊃ B*)))
+
+  | ktrans_⊃E : ktrans (A ⊃ B) (¬ (¬ (A* ⊃ B*))) -> ktrans A A* ->
+               ktrans B B*
+
+  | ktrans_∨I : ktrans A A* -> ktrans B B* -> 
+               ktrans (A ∨ B) (¬ (¬ (A* ∨ B*)))
+  
+  | ktrans_∨E : ktrans (A ∨ B) (¬ (¬ (A* ∨ B*))) -> ktrans A A* -> ktrans B B* -> ktrans C C* ->
+               ktrans C C*
+
+  | ktrans_¬I : ktrans A A* -> {p:o} ktrans p (¬ (¬ p)) ->
+               ktrans (¬ A) (¬ (¬ (¬ A*)))
+
+  | ktrans_⊤ : ktrans ⊤ (¬ (¬ ⊤))
+;
+
+%{
+
+Translation context
+
+}%
+schema ctx = knd A ;
+schema nctx = nd A ;
+
+inductive Rel : {Γ:ctx} {Γ' : nctx} ctype =
+  | empty : Rel [ ] [ ]
+  | cons  : Rel [Γ] [Γ']
+            → Rel [Γ, a:knd A[]] [Γ', a:nd A[]];
+
+rec ktrans_of : [⊢ o] → [⊢ o] =
+fn A =>
+  case A of
+    | [⊢ A1 ∧ B1] =>
+        let [⊢ A1*] = ktrans_of [⊢ A1] in
+        let [⊢ B1*] = ktrans_of [⊢ B1] in
+        [⊢ ¬ (¬ (A1* ∧ B1*))]
+;
+
+%{rec existsktrans : [⊢ o] → [⊢ o] → [⊢ ktrans A[] A*[]] = 
+fn A => fn A_tr =>
+  case A of                           % first analyse the source formula
+    | [⊢ A1 ∧ B1] =>
+        case A_tr of                    % now analyse its translation
+        | [⊢ ¬ (¬ (A1* ∧ B1*))] =>
+    let [⊢ KA] = existsktrans [⊢ A1] [⊢ A1*] in
+    let [⊢ KB] = existsktrans [⊢ B1] [⊢ B1*] in
+    [⊢ ktrans_∧I KA KB]
+;}%
+
+%{inductive ktrans_result : ctype =
+  | result : [⊢ o] → [⊢ o] → [⊢ ktrans A A*] → ktrans_result
+;
+
+rec build_ktrans : (A:[⊢ o]) → ktrans_result =
+fn (A:[⊢ o]) =>
+  case A of
+    | [⊢ A1 ∧ B1] =>
+        let result [⊢ A1] [⊢ A1*] [⊢ KA1] = build_ktrans [⊢ A1] in
+        let result [⊢ B1] [⊢ B1*] [⊢ KB1] = build_ktrans [⊢ B1] in
+        let A* = [⊢ ¬ (¬ (A1* ∧ B1*))] in
+        let K  = [⊢ ktrans_∧ KA1 KB1] in
+        result [⊢ A1 ∧ B1] A* K
+;}%
+
+rec dnotx : Rel [Γ] [Γ'] → [Γ' ⊢ nd A] → [Γ' ⊢ nd (¬ (¬ A))] =
+fn rel => fn prf =>
+  let [Γ' ⊢ D[]] = prf in
+  [Γ' ⊢ ¬I (\p. \u. ¬E u D[])]
+;
+
+rec triple_neg_red : Rel [Γ] [Γ'] → [Γ' ⊢ nd (¬ (¬ (¬ A[])))] → [Γ' ⊢ nd (¬ A[])] =
+fn rel => fn prf =>
+  let [Γ' ⊢ D[]] = prf in
+  [Γ' ⊢ ¬I (\p. \u. ¬E D[] (¬I (\q. \v. ¬E v u)))]
+;
+
+rec dneg_falser : Rel [Γ] [Γ'] → [Γ' ⊢ nd (¬ (¬ ⊥))] → [Γ' ⊢ nd C[]] =
+fn rel => fn prf =>
+  let [Γ' ⊢ D[]] = prf in
+  [Γ' ⊢ ¬E D[] (¬I \p. \u. (⊥E u))]
+;
+
+rec sound : Rel [Γ] [Γ'] → [Γ ⊢ knd A[]] → [ ⊢ ktrans A A*] → [Γ' ⊢ nd A*[]] =
+fn rel => fn prf => fn kolm =>
+  case (prf, kolm) of
+  | ([Γ ⊢ ∧kI NKA NKB], [ ⊢ ktrans_∧I KA KB]) =>
+    let [Γ' ⊢ NJA] = sound rel [Γ ⊢ NKA] [ ⊢ KA] in
+    let [Γ' ⊢ NJB] = sound rel [Γ ⊢ NKB] [ ⊢ KB] in
+    dnotx rel [Γ' ⊢ ∧I NJA NJB]
+  | ([Γ ⊢ ∧kEl (NK1[] : knd (A[] ∧ B[]))], [⊢ ktrans_∧El (K1 : (ktrans (A ∧ B) (¬ (¬ (¬(¬ A**) ∧ ¬(¬ B**))))))]) =>
+    let [Γ' ⊢ NJ1[]] = sound rel [Γ ⊢ NK1[]] [⊢ K1] in
+    [Γ' ⊢ ¬I (\p. \u.
+      ¬E NJ1[] (
+        ¬I (\q. \v.
+          ¬E (∧El v) u)))]
+  | ([Γ ⊢ ∧kEr (NK1[] : knd (A[] ∧ B[]))], [⊢ ktrans_∧Er (K1 : (ktrans (A ∧ B) (¬ (¬ (¬(¬ A**) ∧ ¬(¬ B**))))))]) =>
+    let [Γ' ⊢ NJ1[]] = sound rel [Γ ⊢ NK1[]] [⊢ K1] in
+    [Γ' ⊢ ¬I (\p. \u.
+      ¬E NJ1[] (
+        ¬I (\q. \v.
+          ¬E (∧Er v) u)))]
+  | ([Γ ⊢ ⊃kI \u. (NKB : knd B[])], [⊢ ktrans_⊃I (KA : (ktrans A A*)) (KB : (ktrans B B*))]) =>
+    let [Γ', v:nd A*[] ⊢ v] = sound (cons rel) [Γ, u:knd A[] ⊢ u] [⊢ KA] in
+    let [Γ', v:nd A*[] ⊢ NJB] = sound (cons rel) [Γ, u:knd _ ⊢ NKB] [⊢ KB] in
+    dnotx rel [Γ' ⊢ ⊃I \u. NJB]
+  | ([Γ ⊢ ⊃kE (NKI[] : knd (A[] ⊃ B[])) (NKA[] : knd A[])], [⊢ ktrans_⊃E (KI : (ktrans (A ⊃ B) (¬ (¬ (¬(¬ A**) ⊃ ¬(¬ B**)))))) (KA : (ktrans A (¬(¬ A**))))]) =>
+    let [Γ' ⊢ NJA[]] = sound rel [Γ ⊢ NKA[]] [⊢ KA] in
+    let [Γ' ⊢ NJI[]] = sound rel [Γ ⊢ NKI[]] [⊢ KI] in
+    [Γ' ⊢ ¬I (\p. \u.
+      ¬E NJI[] (
+        ¬I (\q. \v. 
+          ¬E (⊃E v NJA[]) u)))]
+  | ([Γ ⊢ ∨kIl NK], [⊢ ktrans_∨I KA KB]) =>
+    let [Γ' ⊢ NJ] = sound rel [Γ ⊢ NK] [⊢ KA] in
+    dnotx rel [Γ' ⊢ ∨Il NJ]
+  | ([Γ ⊢ ∨kIr NK], [⊢ ktrans_∨I KA KB]) =>
+    let [Γ' ⊢ NJ] = sound rel [Γ ⊢ NK] [⊢ KB] in
+    dnotx rel [Γ' ⊢ ∨Ir NJ]
+  | ([Γ ⊢ ∨kE (NK[] : knd (A[] ∨ B[])) (\ua. NKA[]) (\ub. NKB[])],[⊢ ktrans_∨E (KO : (ktrans (A ∨ B) (¬ (¬ (¬(¬ A**) ∨ ¬(¬ B**)))))) (KA : (ktrans A (¬(¬ A**)))) (KB : (ktrans B (¬(¬ B**)))) (KC : (ktrans C (¬(¬ C**))))]) =>
+    let [Γ' ⊢ NJ[]] = sound rel [Γ ⊢ NK[]] [⊢ KO] in
+    let [Γ', va:nd (¬(¬ A**[])) ⊢ va] = sound (cons rel) [Γ, ua:knd A[] ⊢ ua] [⊢ KA] in
+    let [Γ', vb:nd (¬(¬ B**[])) ⊢ vb] = sound (cons rel) [Γ, ub:knd B[] ⊢ ub] [⊢ KB] in
+    let [Γ', va:nd (¬(¬ A**[])) ⊢ NJA[]] = sound (cons rel) [Γ, ua:knd A[] ⊢ NKA[]] [⊢ KC] in
+    let [Γ', vb:nd (¬(¬ B**[])) ⊢ NJB[]] = sound (cons rel) [Γ, ub:knd B[] ⊢ NKB[]] [⊢ KC] in
+    [Γ' ⊢ ¬I (\p. \u.
+      ¬E NJ[] (
+        ¬I (\q. \v.
+          ¬E (∨E v (\va. NJA[]) (\vb.NJB[])) u)))]
+  | ([Γ ⊢ ¬kI \p. \u. (NK1 : knd p)], [⊢ ktrans_¬I (K : (ktrans A (¬(¬ A**)))) p (KP : (ktrans p (¬(¬ p))))]) =>
+    let [Γ', v: nd (¬(¬ A**[])), p: nd p[] ⊢ v] = sound (cons(cons rel)) [Γ, u:knd A[], p: knd p[] ⊢ u] [⊢ K] in
+    let [Γ', v: nd (¬(¬ A**[])), p: nd p[] ⊢ NJ1[]] = sound (cons(cons rel)) [Γ, u: knd A[], p: knd p[] ⊢ NK1] [⊢ KP] in
+    let [Γ' ⊢ NJN[]] = dneg_falser rel [Γ' ⊢ NJ1[]] in
+    dnotx rel [Γ' ⊢ ¬I \p. \u. NJN[]]
+;
+
