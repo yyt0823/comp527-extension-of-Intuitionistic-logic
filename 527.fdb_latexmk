@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1745124978.1588 "/Users/yyt/Desktop/527/527.tex" "527.pdf" "527" 1745124978.7046 0
-  "/Users/yyt/Desktop/527/527.tex" 1745124977.89976 9801 abd42e70a024d94ef44e38c31fc80a14 ""
+["pdflatex"] 1745126872.74217 "/Users/yyt/Desktop/527/527.tex" "527.pdf" "527" 1745126873.11475 0
+  "/Users/yyt/Desktop/527/527.tex" 1745126872.50425 11336 573ed34c30d8e16cd5e6e30a69268cbe ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -145,8 +145,8 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1745105528 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "527.aux" 1745124978.6384 636 e7af3c8ec303181013c24d4bdb42dd41 "pdflatex"
-  "527.tex" 1745124977.89976 9801 abd42e70a024d94ef44e38c31fc80a14 ""
+  "527.aux" 1745126873.07497 636 50f7cf36dbb19fa9dabe586777155afa "pdflatex"
+  "527.tex" 1745126872.50425 11336 573ed34c30d8e16cd5e6e30a69268cbe ""
   (generated)
   "527.aux"
   "527.log"
