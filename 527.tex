@@ -1,15 +1,259 @@
 \documentclass{article}
+\usepackage{amsmath, amssymb, mathrsfs, stmaryrd}
+\usepackage{array}
+\usepackage{proof}
+\usepackage{bussproofs}
+\usepackage{tikz}
+\usetikzlibrary{cd}
+\renewcommand{\baselinestretch}{1.2}
+
+
+\title{Extend the Intuitionistic Logic Natural Deduction with Kolmogorov Double Negation}
+\author{Yantian Yin \\ Yifei Che}
+\date{}
 
 \begin{document}
 
-\section*{Hello, LaTeX!}
 
-This is your first LaTeX document.
 
-Let’s try a math formula:
+\maketitle
+
+\section{Idea}
+
+The key difference between intuitionistic logic and classical logic lies in the acceptance of the law of excluded middle. Our goal is to explore the connection between the two systems, showing that they are essentially equivalent under double negation translation.
+
+
+\subsection{Nature Deduction}
+For the natural deduction we have these rules for
+ introduction and elimination.
 
 \[
-a^2 + b^2 = c^22
+\infer[\land I]{\vdash A \land B}{\vdash A & \vdash B}
+\hspace{3cm}
+\infer[\land E_L]{\vdash A}{\vdash A \land B}
+\quad
+\infer[\land E_R]{\vdash B}{\vdash A \land B}
 \]
+
+
+% Row 2: →I, →E
+\[
+\infer[\supset I^u]{\vdash A \supset B}{
+  \infer*{\vdash B}{\infer [u]{\vdash A}{}}
+}
+\hspace{3cm}
+\infer[\supset E]{\vdash B}{\vdash A \supset B & \vdash A}
+\]
+
+
+
+% Row 3: ∨I, ∨E
+\[
+\infer[\lor I_L]{\vdash A \lor B}{\vdash A}
+\quad
+\infer[\lor I_R]{\vdash A \lor B}{\vdash B}
+\hspace{2cm}
+\infer[\lor E^{u_1, u_2}]{\vdash C}{
+  \vdash A \lor B
+  \quad
+  \infer*{\vdash C}{\infer[u_1]{\vdash A}{}}
+  \quad
+  \infer*{\vdash C}{\infer[u_2]{\vdash B}{}}
+}
+\]
+
+% Row 4: ¬I, ¬E
+\[
+\infer[\neg I^{p,u}]{\vdash \neg A}{
+  \infer*{\vdash \perp}{\infer[u]{\vdash A}{}}
+}
+\hspace{3cm}
+\infer[\neg E]{\vdash C}{
+  \vdash A & \vdash \neg A
+}
+\]
+
+% Row 5: ⊤I, ⊥E
+\[
+\infer[\top I]{\vdash \top}{}
+\hspace{3cm}
+\infer[\perp E]{\vdash C}{\vdash \perp}
+\]
+Natural deduction (ND) corresponds to intuitionistic logic because it does not enforce that every proposition has a fixed complement. For example, if we apply \emph{negation introduction} ($\neg I$) to a proposition $A$ and derive $\neg A$, we cannot simply repeat this process on $\neg A$ to recover $A$. This asymmetry is a key reason why ND is not classical logic.
+
+To extend ND into classical logic, we need to incorporate the law of excluded middle. One way to do this is by adding the \emph{Kolmogorov double negation rule}, which allows us to derive $A$ from $\neg\neg A$. We refer to this rule as $\neg\text{kd}E$ (short for \emph{not Kolmogorov double Elimination}, or \textbf{nkdE}). With this rule added, we define a new system—ND plus the Kolmogorov rule—which we call \textbf{KND}.
+
+To fully complete KND as classical logic, we must also specify the unique complement of $\top$, which is $\bot$. We treat $\bot$ as an atomic formula. With these additions, KND forms a proper classical logic system.
+
+\[
+\infer[\neg\neg_{kd}E]{\vdash A}{\vdash \neg\neg A}
+\]
+
+\begin{center}
+    \fbox{%
+  \begin{minipage}{0.8\textwidth}
+\[
+\infer[\neg\neg E]{\vdash A \lor \neg A}{
+  \infer[\neg I^{p,u}]{\vdash \neg\neg(A\lor\neg A)}{
+    \infer{\vdash p}{
+      % First assumption subproof u
+      \infer[u]{\vdash \neg(A\lor\neg A)}{}
+      \quad
+      % Disjunction introduction on ¬A
+      \infer[\lor I_2]{\vdash A \lor \neg A}{
+        % Nested negation introduction subproof p,ν
+        \infer[\neg I^{p,\nu}]{\vdash \neg A}
+        {
+          \infer[\neg E]{\vdash p}{
+            % Disjunction introduction on A
+            \infer[u]{\vdash \neg(A\lor\neg A)}{}
+            \quad
+            % Reuse assumption u
+            \infer[\lor I_1]{\vdash A \lor \neg A}{
+              \infer[\nu]{\vdash A}{}
+            }
+          }
+        }
+      }
+    }
+  }
+}
+\]
+\end{minipage}%
+}
+\\
+prove of excluding middle
+
+\end{center}
+
+
+
+
+
+Now in our hand we have the intuitionistic logic ND
+ and classical logic KND. We show that both these two
+  logics are "the same" by proving that for any logical formula provable in KND it can also be proven in ND (soundness) and any logical formula provable in ND can also be proven in KND (completeness).
+
+To do this first we need to define a translation function that translates formulas in ND or KND to their counterparts. We use the ktrans--Kolmogorov translation and it is defined as ($n$ for $\neg\neg$):
+
+\begin{align*}
+A^* &= nA \quad \text{if } A \text{ is atomic} \\
+(A \land B)^* &= n(A^* \land B^*) \\
+(A \supset B)^* &= n(A^* \supset B^*) \\
+(A \lor B)^* &= n(A^* \lor B^*) \\
+(\neg A)^* &= n(\neg A^*) \\
+\top^* &= n\top \\
+\bot^* &= n\bot
+\end{align*}
+
+
+
+
+\section{Inference Rules}
+Before we step into the proof of soundness and completeness we need some 
+inference rules to help us eliminate double negation in ND.
+
+First, since we can prove $\neg\neg A$ from $A$ in ND we 
+have the inference rule $\neg\neg X$. Same with $\neg\neg_{k}X$.
+
+Also we can eliminate $\neg\neg\neg A$ to $\neg A$, we make 
+it as $\neg\neg\neg R$.
+
+% First boxed derivation
+\[
+\infer[\neg I^{p,u}]{\vdash \neg\neg A}{
+  \infer{\vdash p}{
+    \infer[u]{\vdash \neg A}{}
+    \quad
+    \infer[\neg E]{\vdash p}{
+      \vdash A & \vdash \neg A
+    }
+  }
+}
+\quad \Rightarrow \quad
+\fbox{$
+  \begin{array}{c}
+  \vdash A \\
+  \hline
+  \vdash \neg\neg A
+  \end{array}
+$}
+\]
+
+% Second boxed derivation
+\[
+\infer[\neg I^{p,u}]{\vdash \neg\neg A}{
+  \infer{\vdash p}{
+    \infer[u]{\vdash \neg A \land A}{}
+    \quad
+    \infer[\neg E]{\vdash p}{
+      \vdash A & \vdash \neg A
+    }
+  }
+}
+\quad \Rightarrow \quad
+\fbox{$
+  \begin{array}{c}
+  \vdash A \\
+  \hline
+  \vdash \neg\neg A
+  \end{array}
+$}
+\]
+
+% Third boxed derivation
+\[
+\infer[\neg E]{\vdash \neg\neg A \rightarrow A}{
+  \infer[u]{\vdash \neg\neg A}{}
+  \quad
+  \vdash \neg\neg A
+  \quad
+  \vdash A
+}
+\quad \Rightarrow \quad
+\fbox{$
+  \begin{array}{c}
+  \vdash \neg\neg A \\
+  \hline
+  \vdash A
+  \end{array}
+$}
+\]
+
+
+
+
+
+\section{Soundness}
+
+Now with the help of our derivation rule, we can prove our soundness theorem. We do structural proof on the last used operation.
+
+\section{Decomposability}
+
+We need to show that for every formula $A$ there exists a $C$ such that $A = \neg C$.
+
+\section{Completeness}
+
+\begin{center}
+\begin{tabular}{ccc}
+Case: & & Case: \\
+$\infer[\lor I_1]{A \lor B}{A}$ & & $\infer[\lor I_2]{A \lor B}{B}$ \\
+$A = \neg\neg A'$ & & $A = \neg\neg A'$ \\
+$B = \neg\neg B'$ & & $B = \neg\neg B'$ \\
+$\infer{\neg\neg A'}{\infer{A'}{}}$ & $\neg\neg Z$ & $\infer{\neg\neg B'}{\infer{B'}{}}$ \\
+$\infer[\lor I_1]{A' \lor B'}{A'}$ & & $\infer[\lor I_2]{A' \lor B'}{B'}$ \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ccc}
+Case: & & \\
+$\infer{A \lor B}{A}$ & $v_B$ & $\infer{C}{}$ \\
+$A = \neg\neg A'$ & & \\
+$B = \neg\neg B'$ & & \\
+$C = \neg\neg C'$ & & $\infer{\neg\neg A' \lor B'}{}$ \\
+& & $\infer{\neg\neg C'}{\neg\neg C' \lor_{k} Z}$ \\
+\end{tabular}
+\end{center}
 
 \end{document}
