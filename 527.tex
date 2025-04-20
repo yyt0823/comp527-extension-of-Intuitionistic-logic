@@ -122,6 +122,7 @@ To fully complete KND as classical logic, we must also specify the unique comple
 \end{minipage}%
 }
 \\
+\vspace{1em}
 prove of excluding middle
 
 \end{center}
@@ -162,75 +163,240 @@ it as $\neg\neg\neg R$.
 % First boxed derivation
 \[
 \infer[\neg I^{p,u}]{\vdash \neg\neg A}{
-  \infer{\vdash p}{
-    \infer[u]{\vdash \neg A}{}
-    \quad
     \infer[\neg E]{\vdash p}{
-      \vdash A & \vdash \neg A
+        \infer [u]{\vdash \neg A}{} & \vdash A
     }
-  }
 }
 \quad \Rightarrow \quad
 \fbox{$
-  \begin{array}{c}
-  \vdash A \\
-  \hline
-  \vdash \neg\neg A
-  \end{array}
+    \infer[\neg \neg X]{\vdash \neg \neg A}{\vdash A}
 $}
 \]
 
 % Second boxed derivation
 \[
-\infer[\neg I^{p,u}]{\vdash \neg\neg A}{
-  \infer{\vdash p}{
-    \infer[u]{\vdash \neg A \land A}{}
-    \quad
-    \infer[\neg E]{\vdash p}{
-      \vdash A & \vdash \neg A
+\infer[\neg kI^{p,u}]{\vdash \neg\neg A}{
+    \infer[\neg kE]{\vdash p}{
+        \infer [u]{\vdash \neg A}{} & \vdash A
     }
-  }
 }
 \quad \Rightarrow \quad
 \fbox{$
-  \begin{array}{c}
-  \vdash A \\
-  \hline
-  \vdash \neg\neg A
-  \end{array}
+    \infer[\neg \neg kX]{\vdash \neg \neg A}{\vdash A}
 $}
 \]
 
 % Third boxed derivation
 \[
-\infer[\neg E]{\vdash \neg\neg A \rightarrow A}{
-  \infer[u]{\vdash \neg\neg A}{}
-  \quad
-  \vdash \neg\neg A
-  \quad
-  \vdash A
-}
+    \infer[\neg I^{q,u}]{\vdash \neg A}{
+        \infer[\neg E]{\vdash q}{ 
+              \infer[\neg \neg X]{\vdash \neg \neg A}{\infer[u]{\vdash A}{}} &
+              \infer[v]{\vdash \neg \neg \neg A}{}
+        }
+      }
 \quad \Rightarrow \quad
 \fbox{$
-  \begin{array}{c}
-  \vdash \neg\neg A \\
-  \hline
-  \vdash A
-  \end{array}
+    \infer [\neg \neg \neg R]
+    {\vdash \neg A}
+    {\vdash \neg\neg \neg A} 
 $}
 \]
 
 
-
+\section{Decomposability}
+TODO
 
 
 \section{Soundness}
 
 Now with the help of our derivation rule, we can prove our soundness theorem. We do structural proof on the last used operation.
 
-\section{Decomposability}
+\text{Case:}
+\vspace{3em}
+\[
+\infer[\land kI]{A \land^k B}{A & B}
+\quad \Rightarrow \quad
+\infer[\neg\neg X]{\neg\neg(\neg\neg A \land \neg\neg B)}{
+    \infer[\land I]{\neg\neg A \land \neg\neg B}{
+      \neg\neg A & \neg\neg B
+    }
+}
+\]
 
-We need to show that for every formula $A$ there exists a $C$ such that $A = \neg C$.
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\land kE1]{A}{
+  A \land^k B
+}
+\quad \Rightarrow \quad
+\infer[\neg I^{p,v}]{\vdash \neg \neg A}{ 
+  \infer[\neg E]{\vdash p}{
+    \infer[u]{
+        \neg \neg (\neg \neg A \land \neg \neg B)
+     }{}
+     \infer[]{
+        \neg (\neg \neg A \land \neg \neg B)
+     }{
+        \infer[\neg I^{q,u}]{ q}{
+            \infer[\land E1]{\neg \neg A }{
+                \infer[u]{\neg \neg A \land \neg \neg B}{}
+            }
+            \infer[v]{\neg A}{}
+        }
+     }
+  }
+}
+\]
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\land kE2]{B}{
+  A \land^k B
+}
+\quad \Rightarrow \quad
+\infer[\neg I^{p,v}]{\vdash \neg \neg B}{ 
+  \infer[\neg E]{\vdash p}{
+    \infer[u]{
+        \neg \neg (\neg \neg A \land \neg \neg B)
+     }{}
+     \infer[]{
+        \neg (\neg \neg A \land \neg \neg B)
+     }{
+        \infer[\neg I^{q,u}]{ q}{
+            \infer[\land E2]{\neg \neg B }{
+                \infer[u]{\neg \neg A \land \neg \neg B}{}
+            }
+            \infer[v]{\neg B}{}
+        }
+     }
+  }
+}
+\]
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\supset k I^u]{A \supset^k B}{
+  \infer*[]{B}{
+    \infer[u]{A}{}
+  }
+}
+\quad \Rightarrow \quad
+\infer[\neg \neg X ] {\neg \neg(\neg \neg A \supset \neg \neg B )}{
+\infer[\supset  I^u]{\neg \neg A \supset \neg \neg B}{
+  \infer*[]{\neg \neg B}{
+    \infer[u]{\neg \neg A}{}
+  }
+}
+}
+\]
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\supset kE]{B}{
+    A \supset^k B & A
+}
+\quad \Rightarrow \quad
+\infer[\neg I^{q,v}] {\neg \neg B }{
+\infer[\neg E]{q}{
+    \infer[u]{\neg \neg(\neg \neg A \supset \neg \neg B )}{}
+    \infer[\neg I^{p,u}]{\neg(\neg \neg A \supset \neg \neg B )}{
+        \infer[\neg E]{p}{
+            \infer[\supset E]{\neg \neg B}{
+                \infer[u]{\neg \neg A \supset \neg \neg B}{}
+                {\neg \neg A}
+            }
+            \infer[v]{\neg B}{}
+        }
+    }
+}
+}
+\]
+
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\lor kI1]{A \lor^k B}{A}
+\quad \Rightarrow \quad
+\infer[\neg \neg X]{\neg \neg(\neg \neg A \lor \neg \neg B)}{
+    \infer[\lor I1]{\neg \neg A \lor \neg \neg B}{\neg \neg A
+        \infer[]{}{}
+    }
+}
+\]
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\lor kI2]{A \lor^k B}{B}
+\quad \Rightarrow \quad
+\infer[\neg \neg X]{\neg \neg(\neg \neg A \lor \neg \neg B)}{
+    \infer[\lor I2]{\neg \neg A \lor \neg \neg B}{\neg \neg B
+        \infer[]{}{}
+    }
+}
+\]
+
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\lor kE^{u,v}]{C}{
+    {A \lor^k B}
+    \hspace{1em}
+    \infer*[]{C}{
+        \infer[u]{A}{}
+    }
+    \hspace{1em}
+    \infer*[]{C}{
+        \infer[v]{B}{}
+    }
+}
+\quad \Rightarrow \quad
+\infer[\lor E^{u,v}]{C}{
+    {\neg\neg A \lor \neg\neg B}
+    \hspace{1em}
+    \infer*[]{\neg\neg C}{\infer[u]{\neg\neg A}{}}
+    \hspace{1em}
+    \infer*[]{\neg\neg C}{\infer[v]{\neg\neg B}{}}
+}
+\]
+
+
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\neg\neg E]{A}{
+    \neg\neg A
+}
+\quad \Rightarrow \quad
+\infer[\neg\neg\neg R]{\neg \neg A}{
+    \neg\neg\neg\neg A
+}
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Completeness}
 

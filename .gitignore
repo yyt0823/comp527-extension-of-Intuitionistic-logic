@@ -1,0 +1,23 @@
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+
+
+# Editor backups
+*~
+*.swp
+*.bak
+
+# Mac system files
+.DS_Store
