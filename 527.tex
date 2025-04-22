@@ -302,13 +302,13 @@ $}
     an inner formula \(C\) with \(B=\neg\neg C\), proving the claim.
     \end{proof}
     
-\section{Exist}
-TODO
+
 
 
 \section{Soundness}
 
-Now with the help of our derivation rule, we can prove our soundness theorem. We do structural proof on the last used operation.
+
+Now with the help of our derivation rule, and lemma we can prove our soundness theorem. We do structural proof on the last used operation.
 
 \text{Case:}
 \vspace{3em}
@@ -329,8 +329,8 @@ Now with the help of our derivation rule, we can prove our soundness theorem. We
   A \land^k B
 }
 \quad \Rightarrow \quad
-\infer[\neg I^{p,v}]{\vdash \neg \neg A}{ 
-  \infer[\neg E]{\vdash p}{
+\infer[\neg I^{p,v}]{ \neg \neg A}{ 
+  \infer[\neg E]{ p}{
     \infer[u]{
         \neg \neg (\neg \neg A \land \neg \neg B)
      }{}
@@ -355,8 +355,8 @@ Now with the help of our derivation rule, we can prove our soundness theorem. We
   A \land^k B
 }
 \quad \Rightarrow \quad
-\infer[\neg I^{p,v}]{\vdash \neg \neg B}{ 
-  \infer[\neg E]{\vdash p}{
+\infer[\neg I^{p,v}]{\neg \neg B}{ 
+  \infer[\neg E]{p}{
     \infer[u]{
         \neg \neg (\neg \neg A \land \neg \neg B)
      }{}
@@ -443,28 +443,28 @@ Now with the help of our derivation rule, we can prove our soundness theorem. We
 
 \vspace{3em}
 \text{Case:}
-TODO
 \[
 \infer[\lor kE^{u,v}]{C}{
-    {A \lor^k B}
-    \hspace{1em}
-    \infer*[]{C}{
-        \infer[u]{A}{}
-    }
-    \hspace{1em}
-    \infer*[]{C}{
-        \infer[v]{B}{}
-    }
+    {A \lor^{k} B}
+    \hspace{2em}
+    \infer*[]{C}{\infer[u]{A}{}}
+    \hspace{2em}
+    \infer*[]{C}{\infer[v]{B}{}}
 }
-\quad \Rightarrow \quad
-\infer[\lor E^{u,v}]{C}{
-    {\neg\neg A \lor \neg\neg B}
-    \hspace{1em}
-    \infer*[]{\neg\neg C}{\infer[u]{\neg\neg A}{}}
-    \hspace{1em}
-    \infer*[]{\neg\neg C}{\infer[v]{\neg\neg B}{}}
+\quad\Longrightarrow\quad
+\infer[\lor E^{u,v}]{\neg\neg C}{
+    \infer[\neg\neg E]{\neg\neg A \;\lor\; \neg\neg B}{
+        \neg\neg\!\bigl(\neg\neg A \lor \neg\neg B\bigr)}
+    \hspace{2em}
+    \infer*[]{\neg\neg C}{
+        \infer[u]{\neg\neg A}{}}
+    \hspace{2em}
+    \infer*[]{\neg\neg C}{
+        \infer[v]{\neg\neg B}{}}
 }
 \]
+
+
 
 
 
@@ -511,6 +511,7 @@ TODO
 
 
 \section{Completeness}
+
 
 
 \text{Case:}
@@ -616,28 +617,27 @@ TODO
 
 \vspace{3em}
 \text{Case:}
-TODO
 \[
-\infer[\lor kE^{u,v}]{C}{
-    {A \lor^k B}
-    \hspace{1em}
-    \infer*[]{C}{
-        \infer[u]{A}{}
-    }
-    \hspace{1em}
-    \infer*[]{C}{
-        \infer[v]{B}{}
-    }
-}
-\quad \Rightarrow \quad
 \infer[\lor E^{u,v}]{C}{
-    {\neg\neg A \lor \neg\neg B}
-    \hspace{1em}
-    \infer*[]{\neg\neg C}{\infer[u]{\neg\neg A}{}}
-    \hspace{1em}
-    \infer*[]{\neg\neg C}{\infer[v]{\neg\neg B}{}}
+    A \lor  B
+    \hspace{1.5em}
+    \infer*[]{C}{\infer[u]{A}{}}
+    \hspace{1.5em}
+    \infer*[]{C}{\infer[v]{B}{}}
+}
+\;\Longrightarrow\;
+\infer[\neg \neg E]{C'}{
+\infer[\lor kE^{u,v}]{\neg \neg C'}{
+    \neg \neg A' \lor^{k} \neg \neg B'
+    \hspace{1.5em}
+    \infer*[]{\neg\neg C'}{\neg\neg A'}
+    \hspace{1.5em}
+    \infer*[]{\neg\neg C'}{\neg\neg B'}
+ }
 }
 \]
+
+
 
 
 
