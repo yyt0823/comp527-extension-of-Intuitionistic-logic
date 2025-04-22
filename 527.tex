@@ -9,6 +9,8 @@
 \usepackage{fontspec}     
 \usepackage{minted}    
 \usepackage{listings}
+\usepackage{enumitem}             
+
 \lstset{
   basicstyle=\ttfamily\scriptsize,
   breaklines=true,
@@ -529,7 +531,7 @@ Now with the help of our derivation rule, and lemma we can prove our soundness t
 
 
 
-
+\section{kolm}
 
 
 
@@ -543,8 +545,92 @@ Now with the help of our derivation rule, and lemma we can prove our soundness t
 
 \section{Completeness}
 lemma 1: nd A -> knd A
-\\
-lemma 2: if have ktrans A A* then if we can proof knd A* then we can proof knd A
+\begin{proof}[Proof]
+  \leavevmode\par
+  \textbf{Induction hypothesis (IH).}\;
+  For every proper subformula $B$ of $A$,
+  \(
+    \operatorname{kolm}(B,B^{*}),\;
+    \vdash_{\textit{KND}} B^{*}
+    \;\Rightarrow\;
+    \vdash_{\textit{KND}} B .
+  \)
+  
+  \medskip
+  \textbf{Assumptions for the current step}
+  \[
+    \operatorname{kolm}(A,A^{*}),\qquad
+    \Gamma\vdash_{\textit{KND}} A^{*}.
+  \]
+  \textbf{Goal.}\; $\Gamma\vdash_{\textit{KND}} A$.
+  
+  \bigskip
+  \noindent
+  We distinguish the shape of $A$.
+  
+  %------------------------------------------------------------
+  \paragraph{\textsc{Atomic case} \boldmath$(A=p)$.}
+  \[
+    \Gamma\vdash \neg\neg p
+    \;\xRightarrow{\ \neg\neg E\ }\;
+    \Gamma\vdash p.
+  \]
+  
+  %------------------------------------------------------------
+  \paragraph{\textsc{Conjunction} \boldmath$(A=A_1\land A_2)$.}
+  
+  \begin{enumerate}[leftmargin=1.5em,labelsep=.5em,label={\textbf{Step~\arabic*:}}]
+    \item $\Gamma\vdash \neg\neg(A_1^{*}\land A_2^{*})$
+          \hfill(assumption)
+    \item $\Gamma\vdash A_1^{*}\land A_2^{*}$
+          \hfill$\neg\neg E$
+    \item $\Gamma\vdash A_1^{*}$, \;$\Gamma\vdash A_2^{*}$
+          \hfill$\land E_1,\land E_2$
+    \item $\Gamma\vdash A_1$, \;$\Gamma\vdash A_2$
+          \hfill(IH on $A_1$, $A_2$)
+    \item $\Gamma\vdash A_1\land A_2$
+          \hfill$\land I$
+  \end{enumerate}
+  
+  %------------------------------------------------------------
+  \paragraph{Disjunction \boldmath$(A = A_{1}\lor A_{2})$.}
+
+\begin{enumerate}[leftmargin=1.5em,labelsep=.5em,
+                  label=\textbf{Step~\arabic*:}]
+  \item $\Gamma \vdash \neg\neg(A_{1}^{*}\lor A_{2}^{*}).$
+  \item $\Gamma \vdash A_{1}^{*}\lor A_{2}^{*}$ \hfill $\neg\neg E$
+  \item $\Gamma, A_{1}^{*} \vdash A_{1}$ \hfill IH on $A_{1}$
+  \item $\Gamma, A_{1}^{*} \vdash A_{1}\lor A_{2}$ \hfill $\lor I_{1}$ on Step 3
+  \item $\Gamma, A_{2}^{*} \vdash A_{2}$ \hfill IH on $A_{2}$
+  \item $\Gamma, A_{2}^{*} \vdash A_{1}\lor A_{2}$ \hfill $\lor I_{2}$ on Step 5
+  \item $\Gamma \vdash A_{1}\lor A_{2}$ \hfill $\lor E$ on Steps 2, 4, 6
+\end{enumerate}
+
+
+  
+  %------------------------------------------------------------
+  \paragraph{Implication \boldmath$(A = A_{1}\supset A_{2})$.}
+
+\begin{enumerate}[leftmargin=1.5em,labelsep=.5em,
+                  label=\textbf{Step~\arabic*:}]
+  \item $\Gamma \vdash \neg\neg\bigl(A_{1}^{*}\supset A_{2}^{*}\bigr).$
+  \item $\Gamma \vdash A_{1}^{*}\supset A_{2}^{*}$ \hfill $\neg\neg E$
+  \item $\Gamma , A_{1} \vdash A_{1}^{*}$ \hfill (ND$\!\to$KND lemma)
+  \item $\Gamma , A_{1} \vdash A_{2}^{*}$ \hfill $\supset E$ on Steps 2–3
+  \item $\Gamma , A_{1} \vdash A_{2}$ \hfill IH on $A_{2}$
+  \item $\Gamma \vdash A_{1}\supset A_{2}$ \hfill $\supset I$ on Step 5
+\end{enumerate}
+
+  
+  %------------------------------------------------------------
+  \paragraph{Other constructors.}
+  $\top$, $\bot$, and $\neg$ are immediate
+  (\(\top\!I\), \(\bot\!E\), \(\neg I/E\)) and follow the same IH pattern.
+  
+  \bigskip
+  In every case the goal $\Gamma\vdash A$ is obtained, completing the induction.
+  \end{proof}
+
 
 
 
