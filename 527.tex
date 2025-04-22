@@ -214,6 +214,25 @@ $}
 $}
 \]
 
+% Fourth boxed derivation
+% Fourth boxed derivation  (re‑done for dneg_falser)
+\[
+\infer[\bot E]{\vdash C}{
+  \infer[\neg E]{\vdash p}{
+    \vdash \neg\neg\bot
+    &
+    \infer[\neg I^{u}]{\vdash \neg\bot}{
+      \infer[u]{\vdash \bot}{}
+    }
+  }
+}
+\quad \Rightarrow \quad
+\fbox{$
+  \infer[\neg\neg\bot E]{\vdash C}{\vdash \neg\neg\bot}
+$}
+\]
+
+
 \section{Lemma}
 \begin{lemma}[Existence of Kolmogorov Translation]\label{lem:exists-kolm}
   For every propositional formula $A$ (built from atoms with
@@ -316,7 +335,8 @@ $}
 
 
 \section{Soundness}
-
+lemma 1: nd A -> knd A
+lemma 2: if have ktrans A A* then if we can proof knd A* then we can proof nd A
 
 Now with the help of our derivation rule, and lemma we can prove our soundness theorem. We do structural proof on the last used operation.
 
