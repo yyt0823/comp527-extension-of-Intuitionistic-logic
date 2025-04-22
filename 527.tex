@@ -249,10 +249,13 @@ $}
   \[
   \begin{array}{rcl@{\qquad}l}
   p^{\!*}              &\coloneqq& \neg\neg p &(\text{$p$ atomic})\\[4pt]
+  \top^{\!*}           &\coloneqq& \top\\
+  \bot^{\!*}           &\coloneqq& \bot\\[4pt]
   (A \land B)^{\!*}    &\coloneqq& \neg\neg\bigl(A^{\!*}\land B^{\!*}\bigr)\\
   (A \lor  B)^{\!*}    &\coloneqq& \neg\neg\bigl(A^{\!*}\lor  B^{\!*}\bigr)\\
   (A \supset B)^{\!*}  &\coloneqq& \neg\neg\bigl(A^{\!*}\supset B^{\!*}\bigr)\\
   (\neg A)^{\!*}       &\coloneqq& \neg\neg\neg A^{\!*}
+  
   \end{array}
   \]
   
@@ -335,8 +338,6 @@ $}
 
 
 \section{Soundness}
-lemma 1: nd A -> knd A
-lemma 2: if have ktrans A A* then if we can proof knd A* then we can proof nd A
 
 Now with the help of our derivation rule, and lemma we can prove our soundness theorem. We do structural proof on the last used operation.
 
@@ -541,131 +542,11 @@ Now with the help of our derivation rule, and lemma we can prove our soundness t
 
 
 \section{Completeness}
+lemma 1: nd A -> knd A
+\\
+lemma 2: if have ktrans A A* then if we can proof knd A* then we can proof knd A
 
 
-
-\text{Case:}
-\vspace{3em}
-\[
-\infer[\land I]{A \land B}{A & B}
-\quad \Rightarrow \quad
-\infer[\land kI]{A' \land^k B'}{
-    \infer[\neg\neg E]{A'}{\neg\neg A'}
-    \hspace{1em}
-    \infer[\neg\neg E]{B'}{\neg\neg B'}
-}
-\]
-
-\vspace{3em}
-\text{Case:}
-\[
-\infer[\land E1]{A}{
-  A \land B
-}
-\quad \Rightarrow \quad
-\infer[\neg\neg E]{A'}{
-    \infer[\land kE1]{\neg\neg A'}{
-        \neg\neg A' \land^k \neg\neg B'
-    }
-}
-\]
-
-\vspace{3em}
-\text{Case:}
-\[
-\infer[\land E2]{A}{
-  A \land B
-}
-\quad \Rightarrow \quad
-\infer[\neg\neg E]{B'}{
-    \infer[\land kE2]{\neg\neg B'}{
-        \neg\neg A' \land^k \neg\neg B'
-    }
-}
-\]
-
-\vspace{3em}
-\text{Case:}
-\[
-\infer[\supset  I^u]{A \supset B}{
-  \infer*[]{B}{
-    \infer[u]{A}{}
-  }
-}
-\quad \Rightarrow \quad
-\infer[\supset kI^v]{A' \supset^k B'}{
-\infer[\neg \neg E ] {B'}{
-\infer[\supset kE]{\neg \neg B'}{
-  \infer*[]{\infer[\supset kI^u]{\neg \neg A' \supset^k \neg \neg B'}{\neg \neg B'}}{
-    \infer[u]{\neg \neg A'}{}
-  }
-  \infer[\neg\neg X]{\neg\neg A'}{\infer[v]{A'}{}}
-}
-}}
-\]
-
-
-\vspace{3em}
-\text{Case:}
-\[
-\infer[\supset E]{B}{
-    A \supset B & A
-}
-\quad \Rightarrow \quad
-\infer[\neg\neg E]{B'}{
-    \infer[\supset kE]{\neg\neg B'}{
-        \neg\neg A' \supset^k \neg\neg B'
-        &
-        \neg\neg A'
-    } 
-} 
-\]
-
-
-\vspace{3em}
-\text{Case:}
-\[
-\infer[\lor I1]{A \lor B}{A}
-\quad \Rightarrow \quad
-\infer[\lor kI1]{A' \lor^k B'}{
-    \infer[\neg \neg E]{A'}{\neg \neg A'
-    }
-}
-\]
-
-\vspace{3em}
-\text{Case:}
-\[
-\infer[\lor I2]{A \lor B}{B}
-\quad \Rightarrow \quad
-\infer[\lor kI2]{A' \lor^k B'}{
-    \infer[\neg \neg E]{B'}{\neg \neg B'
-    }
-}
-\]
-
-
-\vspace{3em}
-\text{Case:}
-\[
-\infer[\lor E^{u,v}]{C}{
-    A \lor  B
-    \hspace{1.5em}
-    \infer*[]{C}{\infer[u]{A}{}}
-    \hspace{1.5em}
-    \infer*[]{C}{\infer[v]{B}{}}
-}
-\;\Longrightarrow\;
-\infer[\neg \neg E]{C'}{
-\infer[\lor kE^{u,v}]{\neg \neg C'}{
-    \neg \neg A' \lor^{k} \neg \neg B'
-    \hspace{1.5em}
-    \infer*[]{\neg\neg C'}{\neg\neg A'}
-    \hspace{1.5em}
-    \infer*[]{\neg\neg C'}{\neg\neg B'}
- }
-}
-\]
 
 
 
