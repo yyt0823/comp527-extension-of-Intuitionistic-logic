@@ -1,9 +1,11 @@
 \documentclass{article}
-\usepackage{amsmath, amssymb, mathrsfs, stmaryrd}
+\usepackage{amsmath, amssymb, mathrsfs, stmaryrd,amsthm}
 \usepackage{array}
 \usepackage{proof}
 \usepackage{bussproofs}
 \usepackage{tikz}
+\newtheorem{lemma}{Lemma}
+\usepackage{mathtools}         
 \usetikzlibrary{cd}
 \renewcommand{\baselinestretch}{1.2}
 
@@ -202,8 +204,105 @@ $}
 $}
 \]
 
+\section{Lemma}
+\begin{lemma}[Existence of Kolmogorov Translation]\label{lem:exists-kolm}
+  For every propositional formula $A$ (built from atoms with
+  $\neg$, $\land$, $\lor$, and $\supset$), there exists a formula
+  $A^{\!*}$—its Kolmogorov translation—such that
+  \[
+    \operatorname{kolm}(A,A^{\!*})
+  \]
+  holds.
+  \end{lemma}
+  
+  \begin{proof}
+  Define $A^{\!*}$ by structural induction on $A$:
+  \[
+  \begin{array}{rcl@{\qquad}l}
+  p^{\!*}              &\coloneqq& \neg\neg p &(\text{$p$ atomic})\\[4pt]
+  (A \land B)^{\!*}    &\coloneqq& \neg\neg\bigl(A^{\!*}\land B^{\!*}\bigr)\\
+  (A \lor  B)^{\!*}    &\coloneqq& \neg\neg\bigl(A^{\!*}\lor  B^{\!*}\bigr)\\
+  (A \supset B)^{\!*}  &\coloneqq& \neg\neg\bigl(A^{\!*}\supset B^{\!*}\bigr)\\
+  (\neg A)^{\!*}       &\coloneqq& \neg\neg\neg A^{\!*}
+  \end{array}
+  \]
+  
+  \noindent
+  \textbf{Base case.}  If $A$ is atomic ($A=p$), set $A^{\!*}=\neg\neg p$; then
+  $\operatorname{kolm}(p,\neg\neg p)$ is immediate.
+  
+  \smallskip
+  \noindent
+  \textbf{Inductive step.}  Assume $A^{\!*}$ and $B^{\!*}$ already exist.
+  The table above defines translations for each composite constructor,
+  and the corresponding $\operatorname{kolm}$ derivations follow from
+  the induction hypotheses.
+  
+  \smallskip
+  Since the construction terminates for every syntax tree, the
+  mapping $A\mapsto A^{\!*}$ is total; hence
+  $\operatorname{kolm}(A,A^{\!*})$ holds for all formulas $A$.
+  \end{proof}
 
-\section{Decomposability}
+
+  \begin{lemma}[Every Kolmogorov image is a double negation]
+    \label{lem:outer-dneg}
+    Let $A$ and $B$ be propositional formulas.
+    If \(\operatorname{kolm}(A,B)\) holds, then there exists a formula
+    \(C\) such that
+    \[
+       B \;=\; \neg\neg C
+       \quad\text{and}\quad
+       \operatorname{kolm}(A,C).
+    \]
+    \end{lemma}
+    
+    \begin{proof}
+    Proceed by induction on the derivation of \(\operatorname{kolm}(A,B)\).
+    
+    \smallskip
+    \emph{Atomic case.}  
+    If \(A=p\) and the derivation ends with the rule for atoms, we have
+    \(B=\neg\neg p\).  
+    Set \(C:=p\).  
+    Then \(\operatorname{kolm}(p,C)\) is the very last step of the given
+    derivation, so the claim holds.
+    
+    \smallskip
+    \emph{Conjunction.}  
+    Suppose \(\operatorname{kolm}(A\land B_0,\,B)\) is derived via
+    \[
+       B \;=\; \neg\neg\bigl(D_1\land D_2\bigr),
+       \qquad
+       \operatorname{kolm}(A,D_1),
+       \qquad
+       \operatorname{kolm}(B_0,D_2).
+    \]
+    Take \(C := D_1\land D_2\).
+    Both sub‑derivations satisfy the induction hypothesis, hence
+    \(\operatorname{kolm}(A\land B_0,C)\) holds and
+    \(B=\neg\neg C\).
+    
+    \smallskip
+    \emph{Disjunction and implication.}  
+    The arguments are identical: each rule in the definition of
+    \(\operatorname{kolm}\) produces the outer pattern
+    \(\neg\neg(\,\cdot\,)\), so we peel off that pair of negations and
+    re‑assemble the inner sub‑translations using the induction hypothesis.
+    
+    \smallskip
+    \emph{Negation.}  
+    From \(\operatorname{kolm}(\neg A_0,B)\) we get
+    \(B=\neg\neg\neg D\) with \(\operatorname{kolm}(A_0,D)\).
+    Let \(C := \neg D\); then again \(B=\neg\neg C\) and
+    \(\operatorname{kolm}(\neg A_0,C)\).
+    
+    \smallskip
+    Thus every derivation of \(\operatorname{kolm}(A,B)\) factors through
+    an inner formula \(C\) with \(B=\neg\neg C\), proving the claim.
+    \end{proof}
+    
+\section{Exist}
 TODO
 
 
