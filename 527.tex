@@ -9,7 +9,8 @@
 \usepackage{fontspec}     
 \usepackage{minted}    
 \usepackage{listings}
-\usepackage{enumitem}             
+\usepackage{enumitem}    
+    
 
 \lstset{
   basicstyle=\ttfamily\scriptsize,
@@ -531,7 +532,38 @@ Now with the help of our derivation rule, and lemma we can prove our soundness t
 
 
 
-\section{kolm}
+\section{Kolm rules}
+% ------------------ helpers ---------------------------------
+\newcommand{\kolm}{\mathsf{kolm}}   % typeset in sans-serif math
+\newcommand{\nneg}{\neg\neg}            % short for double negation
+% ------------------------------------------------------------
+
+\begin{align*}
+\kolm_{\land I}&:\;
+  \kolm\,A\,A^{*}\;\to\;
+  \kolm\,B\,B^{*}\;\to\;
+  \kolm\!\bigl(A\!\land\!B\bigr)\;
+  \nneg\!\bigl(A^{*}\land B^{*}\bigr) \\[4pt]
+\kolm_{\supset I}&:\;
+  \kolm\,A\,A^{*}\;\to\;
+  \kolm\,B\,B^{*}\;\to\;
+  \kolm\!\bigl(A\!\supset\!B\bigr)\;
+  \nneg\!\bigl(A^{*}\supset B^{*}\bigr) \\[4pt]
+\kolm_{\lor I}&:\;
+  \kolm\,A\,A^{*}\;\to\;
+  \kolm\,B\,B^{*}\;\to\;
+  \kolm\!\bigl(A\!\lor\!B\bigr)\;
+  \nneg\!\bigl(A^{*}\lor B^{*}\bigr) \\[4pt]
+\kolm_{\neg I}&:\;
+  \kolm\,A\,A^{*}\;\to\;
+  \kolm\bigl(\neg A\bigr)\;
+  \nneg\!\bigl(\neg A^{*}\bigr) \\[4pt]
+\kolm_{\top}&:\;
+  \kolm\,\top\;\nneg\top \\[4pt]
+\kolm_{\bot}&:\;
+  \kolm\,\bot\;\nneg\bot
+\end{align*}
+
 
 
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  22 APR 2025 19:55
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  22 APR 2025 20:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -597,22 +597,22 @@ File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (./527.aux)
 \openout1 = `527.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
 
 Package fontspec Info: 
 (fontspec)             Adjusting the maths setup (use [no-math] to avoid
@@ -620,70 +620,70 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup8
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 29.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 29.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 29.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 29.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 29.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 29.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 29.
-LaTeX Font Info:    Redeclaring math accent \check on input line 29.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 29.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 29.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 29.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 29.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 30.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 30.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 30.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 30.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 30.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 30.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 30.
+LaTeX Font Info:    Redeclaring math accent \check on input line 30.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 30.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 30.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 30.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 30.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 30.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 30.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 30.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 30.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 30.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 30.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 30.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 30.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 30.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 30.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 30.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 30.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 29.
+(Font)              `operators' in the math version `normal' on input line 30.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 29.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 30.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 29.
+(Font)              `operators' in the math version `bold' on input line 30.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 29.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 30.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 29.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 30.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 29.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 30.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 29.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 30.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 29.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 30.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 29.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 30.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 29.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 30.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 29.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 30.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 29.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 30.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 29.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 30.
 \c@lstlisting=\count360
-LaTeX Font Info:    Trying to load font information for U+msa on input line 33.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 33.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 33.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 34.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 33.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 34.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 
 [1
@@ -697,24 +697,24 @@ LaTeX Font Info:    Trying to load font information for U+stmry on input line 33
 [4]
 
 [5]
-Overfull \hbox (56.68361pt too wide) detected at line 498
+Overfull \hbox (56.68361pt too wide) detected at line 499
 []  [][]\OMS/cmsy/m/n/10 )  []
  []
 
 
 
 [6]
-Overfull \hbox (50.74278pt too wide) in paragraph at lines 550--558
+Overfull \hbox (50.74278pt too wide) in paragraph at lines 582--590
 []\TU/lmr/bx/n/10 Induction hypothesis (IH). \TU/lmr/m/n/10 For every proper subformula $\OML/cmm/m/it/10 B$ \TU/lmr/m/n/10 of $\OML/cmm/m/it/10 A$\TU/lmr/m/n/10 , $[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 B; B[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ;  \OMS/cmsy/m/n/10 `[]
  []
 
 
 LaTeX Font Warning: Font shape `TU/lmr/bx/sc' undefined
-(Font)              using `TU/lmr/bx/n' instead on input line 573.
+(Font)              using `TU/lmr/bx/n' instead on input line 605.
 
 
 LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
-(Font)              using `U/stmry/m/n' instead on input line 573.
+(Font)              using `U/stmry/m/n' instead on input line 605.
 
 
 
@@ -724,20 +724,20 @@ Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
 Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
 Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∀ (U+2200) in font [lmmono8-regular]:!
-Missing character: There is no ∀ (U+2200) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∀ (U+2200) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∃ (U+2203) in font [lmmono8-regular]:!
-Missing character: There is no ∃ (U+2203) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∃ (U+2203) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 
 
 [8]
+Missing character: There is no ∀ (U+2200) in font [lmmono8-regular]:!
+Missing character: There is no ∀ (U+2200) in font [lmmono8-regular]:!
+Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
+Missing character: There is no ∀ (U+2200) in font [lmmono8-regular]:!
+Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
+Missing character: There is no ∃ (U+2203) in font [lmmono8-regular]:!
+Missing character: There is no ∃ (U+2203) in font [lmmono8-regular]:!
+Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
+Missing character: There is no ∃ (U+2203) in font [lmmono8-regular]:!
+Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
 Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
 Missing character: There is no ∀ (U+2200) in font [lmmono8-regular]:!
@@ -762,17 +762,17 @@ Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
 Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
 Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
 Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 
 
 [9]
+Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
+Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
+Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
+Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
@@ -800,15 +800,15 @@ Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
 Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
 Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
 Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
 
 
 [10]
+Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
+Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
+Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
+Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
+Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
+Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
 Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
 Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
 Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
@@ -853,28 +853,6 @@ Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
 
 
 [11]
@@ -883,6 +861,28 @@ Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
@@ -937,38 +937,38 @@ Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 
 
 [12]
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
@@ -1067,27 +1067,27 @@ Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 
 
 [13]
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
@@ -1167,14 +1167,17 @@ Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
 Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
 
 
 [14]
-runsystem(latexminted cleantemp  --timestamp 20250422195523 13F320E7B5EAD1024AC95C3B208610DB)...executed safely (allowed).
+Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+
+
+[15]
+runsystem(latexminted cleantemp  --timestamp 20250422200222 13F320E7B5EAD1024AC95C3B208610DB)...executed safely (allowed).
 
  (./527.aux)
  ***********
@@ -1187,12 +1190,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 23439 strings out of 473832
- 539528 string characters out of 5729482
- 1598224 words of memory out of 5000000
- 46097 multiletter control sequences out of 15000+600000
- 570303 words of font info for 102 fonts, out of 8000000 for 9000
+ 23449 strings out of 473832
+ 539753 string characters out of 5729482
+ 1594224 words of memory out of 5000000
+ 46102 multiletter control sequences out of 15000+600000
+ 570327 words of font info for 105 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  102i,43n,107p,504b,1483s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on 527.pdf (14 pages).
+Output written on 527.pdf (15 pages).
