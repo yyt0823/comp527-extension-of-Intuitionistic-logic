@@ -50,7 +50,7 @@ Our work focuses on the functional translation of classical formulas and derivat
 \paragraph{Approach.} We adopt the following methodology:
 \begin{enumerate}
     \item Define a functional translation of formulas from classical to intuitionistic logic (Kolmogorov translation) using LF type \textbf{LF ktrans : o -> o -> type} (we call it kolm in paper proof). Also define the inference rules of ktrans to allow derivation.
-    \item Prove \textbf{soundness}: every classical derivation (after translation) yields a valid intuitionistic proof of the given translated formula \textbf{ rec sound : Rel [Γ] [Γ'] → [Γ ⊢ knd A[]] → [ ⊢ ktrans A A*] → [Γ' ⊢ nd A*[]]}. It's also based on two lemmas:
+    \item Prove \textbf{soundness}: every classical derivation (after translation) yields a valid intuitionistic proof of the given translated formula \textbf{ rec sound : Rel [Γ] [Γ'] → [Γ $\vdash$ knd A[]] → [ $\vdash$ ktrans A A*] → [Γ' $\vdash$ nd A*[]]}. It's also based on two lemmas:
     \begin{enumerate}
       \item \textbf{Existence of Kolmogorov Translation}  
       For every formula $A$, there exists an formula $A^*$ such that $\textsf{kolm}(A, A^*)$ holds.  
@@ -63,20 +63,20 @@ Our work focuses on the functional translation of classical formulas and derivat
       All Kolmogorov Translation of a formula contains a double negation. 
     \end{enumerate}
     Then we can be free to use Hypothesis Induction, ¬I rule and ¬E rule to prove soundness.
-    \item Prove \textbf{completeness}: for every intuitionistic proof of a  translated formula, there exists a corresponding classical derivation. \textbf{rec equiv : Rel [Γ] [Γ'] → [⊢ ktrans A A*] → [Γ ⊢ knd A*[]] → [Γ ⊢ knd A[]]}. It's also based on two lemmas:
+    \item Prove \textbf{completeness}: for every intuitionistic proof of a  translated formula, there exists a corresponding classical derivation. \textbf{rec complete :  Rel [Γ] [Γ'] → [Γ' $\vdash$ nd A*[]] → [$\vdash$ ktrans A A*] → [Γ $\vdash$ knd A[]]}. It's also based on two lemmas:
     \begin{enumerate}
       \item \textbf{Back-Translation Lemma}  
       If we can prove intuitionistic formula $A$, a proof of classical formula $A$ exists.  
       \textit{Beluga setup:}
       \begin{verbatim}
-      rec nj_nk : Rel [Γ] [Γ'] → [Γ' ⊢ nd A[]] → [Γ ⊢ knd A[]]
+      rec nj_nk : Rel [Γ] [Γ'] → [Γ'|- nd A[]] → [Γ |- knd A[]]
       \end{verbatim}
     
       \item \textbf{Kolmogorov Equivalence Lemma}  
       If $A^*$ is the Kolmogorov translation of $A$, and $A^*$ is provable in classical natural deduction, thenthen the original formula $A$ is also provable in classical natural deduction.
       \begin{verbatim}
-      rec equiv : Rel [Γ] [Γ'] → [⊢ ktrans A A*] → [Γ ⊢ knd A*[]] 
-      → [Γ ⊢ knd A[]]
+      rec equiv : Rel [Γ] [Γ'] → [|- ktrans A A*] → [Γ |- knd A*[]] 
+      → [Γ |- knd A[]]
       \end{verbatim}
     \end{enumerate}
     Then all cases of completeness can be proved in the same way by using these two lemmas.
@@ -84,9 +84,9 @@ Our work focuses on the functional translation of classical formulas and derivat
 
 \paragraph{Contribution.} This work contributes:
 \begin{itemize}
-    \item A mechanized and executable implementation of Kolmogorov translation in Beluga.
+    \item A mechanized implementation of Kolmogorov translation in Beluga.
     \item Proof of lemmas and inference rules needed using recursive functions.
-    \item A constructive proof of soundness and completeness of the Kolmogorov embedding in Beluga.
+    \item Proof of soundness and completeness of the Kolmogorov embedding in Beluga.
 \end{itemize}
 Our Beluga implementation demonstrates the expressiveness and utility of dependently-typed meta-programming for logic translation and proof theory.
 
