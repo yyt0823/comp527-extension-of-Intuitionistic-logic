@@ -100,93 +100,93 @@ For the natural deduction we have these rules for
  introduction and elimination.
 
 \[
-\infer[\land I]{\vdash A \land B}{\vdash A & \vdash B}
+\infer[\land I]{A \land B}{A & B}
 \hspace{3cm}
-\infer[\land E_L]{\vdash A}{\vdash A \land B}
+\infer[\land E_L]{A}{A \land B}
 \quad
-\infer[\land E_R]{\vdash B}{\vdash A \land B}
+\infer[\land E_R]{B}{A \land B}
 \]
 
 
 % Row 2: →I, →E
 \[
-\infer[\supset I^u]{\vdash A \supset B}{
-  \infer*{\vdash B}{\infer [u]{\vdash A}{}}
+\infer[\supset I^u]{A \supset B}{
+  \infer*{B}{\infer [u]{A}{}}
 }
 \hspace{3cm}
-\infer[\supset E]{\vdash B}{\vdash A \supset B & \vdash A}
+\infer[\supset E]{B}{A \supset B & A}
 \]
 
 
 
 % Row 3: ∨I, ∨E
 \[
-\infer[\lor I_L]{\vdash A \lor B}{\vdash A}
+\infer[\lor I_L]{A \lor B}{A}
 \quad
-\infer[\lor I_R]{\vdash A \lor B}{\vdash B}
+\infer[\lor I_R]{A \lor B}{B}
 \hspace{2cm}
-\infer[\lor E^{u_1, u_2}]{\vdash C}{
-  \vdash A \lor B
+\infer[\lor E^{u_1, u_2}]{C}{
+  A \lor B
   \quad
-  \infer*{\vdash C}{\infer[u_1]{\vdash A}{}}
+  \infer*{C}{\infer[u_1]{A}{}}
   \quad
-  \infer*{\vdash C}{\infer[u_2]{\vdash B}{}}
+  \infer*{C}{\infer[u_2]{B}{}}
 }
 \]
 
 % Row 4: ¬I, ¬E
 \[
-\infer[\neg I^{u}]{\vdash \neg A}{
-  \infer*{\vdash \perp}{\infer[u]{\vdash A}{}}
+\infer[\neg I^{u}]{\neg A}{
+  \infer*{\perp}{\infer[u]{A}{}}
 }
 \qquad
 \parbox{0.45\linewidth}{\footnotesize
   For convenience, we instantiate this rule with $\perp$ rather than an arbitrary proposition $p$, since $\perp \rightarrow p$ holds intuitionistically.
 }
 \hspace{3cm}
-\infer[\neg E]{\vdash C}{
-  \vdash A & \vdash \neg A
+\infer[\neg E]{C}{
+   A & \neg A
 }
 \]
 
 % Row 5: ⊤I, ⊥E
 \[
-\infer[\top I]{\vdash \top}{}
+\infer[\top I]{\top}{}
 \hspace{3cm}
-\infer[\perp E]{\vdash C}{\vdash \perp}
+\infer[\perp E]{C}{\perp}
 \]
 Natural deduction (ND) corresponds to intuitionistic logic because it does not enforce that every proposition has a fixed complement. For example, if we apply \emph{negation introduction} ($\neg I$) to a proposition $A$ and derive $\neg A$, we cannot simply repeat this process on $\neg A$ to recover $A$. This asymmetry is a key reason why ND is not classical logic.
 
-To extend ND into classical logic, we need to incorporate the law of excluded middle. One way to do this is by adding the \emph{Kolmogorov double negation rule}, which allows us to derive $A$ from $\neg\neg A$. We refer to this rule as $\neg\text{kd}E$ (short for \emph{not Kolmogorov double Elimination}, or \textbf{nkdE}). With this rule added, we define a new system—ND plus the Kolmogorov rule—which we call \textbf{KND}.
+To extend ND into classical logic, we need to incorporate the law of excluded middle. One way to do this is by adding the \emph{Kolmogorov double negation rule}, which allows us to derive $A$ from $\neg\neg A$. We refer to this rule as $\neg\neg\text{k}E$ (short for \emph{not Kolmogorov double Elimination}, or \textbf{nkdE}). With this rule added, we define a new system—ND plus the Kolmogorov rule—which we call \textbf{KND}.
 
 To fully complete KND as classical logic, we must also specify the unique complement of $\top$, which is $\bot$. We treat $\bot$ as an atomic formula. With these additions, KND forms a proper classical logic system.
 
 \[
-\infer[\neg\neg_{kd}E]{\vdash A}{\vdash \neg\neg A}
+\infer[\neg\neg_{k}E]{A}{\neg\neg A}
 \]
 
 \begin{center}
     \fbox{%
   \begin{minipage}{0.8\textwidth}
 \[
-\infer[\neg\neg E]{\vdash A \lor \neg A}{
-  \infer[\neg I^{p,u}]{\vdash \neg\neg(A\lor\neg A)}{
-    \infer{\vdash p}{
+\infer[\neg\neg kE]{A \lor \neg A}{
+  \infer[\neg kI^{u}]{\neg\neg(A\lor\neg A)}{
+    \infer[\neg kE]{\bot}{
       % First assumption subproof u
-      \infer[u]{\vdash \neg(A\lor\neg A)}{}
+      \infer[u]{\neg(A\lor\neg A)}{}
       \quad
       % Disjunction introduction on ¬A
-      \infer[\lor I_2]{\vdash A \lor \neg A}{
+      \infer[\lor kI_2]{A \lor \neg A}{
         % Nested negation introduction subproof p,ν
-        \infer[\neg I^{p,\nu}]{\vdash \neg A}
+        \infer[\neg kI^{u}]{\neg A}
         {
-          \infer[\neg E]{\vdash p}{
+          \infer[\neg kE]{\bot}{
             % Disjunction introduction on A
-            \infer[u]{\vdash \neg(A\lor\neg A)}{}
+            \infer[u]{\neg(A\lor\neg A)}{}
             \quad
             % Reuse assumption u
-            \infer[\lor I_1]{\vdash A \lor \neg A}{
-              \infer[\nu]{\vdash A}{}
+            \infer[\lor kI_1]{A \lor \neg A}{
+              \infer[\nu]{A}{}
             }
           }
         }
