@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  23 APR 2025 17:11
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  23 APR 2025 17:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -730,7 +730,7 @@ Overfull \hbox (30.84001pt too wide) in paragraph at lines 91--92
  []
 
 
-Overfull \hbox (29.80739pt too wide) detected at line 150
+Overfull \hbox (3.14091pt too wide) detected at line 150
 [] [] []
  []
 
@@ -789,7 +789,7 @@ No file 527.bbl.
 
 
 [13]
-runsystem(latexminted cleantemp  --timestamp 20250423171135 13F320E7B5EAD1024AC95C3B208610DB)...executed safely (allowed).
+runsystem(latexminted cleantemp  --timestamp 20250423172710 13F320E7B5EAD1024AC95C3B208610DB)...executed safely (allowed).
 
  (./527.aux)
  ***********
@@ -811,6 +811,6 @@ Here is how much of TeX's memory you used:
  46112 multiletter control sequences out of 15000+600000
  570351 words of font info for 108 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 102i,43n,107p,504b,497s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,43n,107p,504b,493s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on 527.pdf (13 pages).
