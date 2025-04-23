@@ -26,7 +26,7 @@ LF nd : o -> type =
   | ⊃E : nd (A ⊃ B) -> nd A 			  
 	 -> nd B
 	       
-  | ¬I : ({p:o} nd A -> nd p)
+  | ¬I : (nd A -> nd ⊥)
 	 -> nd (¬ A)
 	       
   | ¬E : nd (¬ A) -> nd A
@@ -86,7 +86,7 @@ LF knd : o → type =
   | ⊥kE : knd ⊥
          → knd C
   
-  | ¬kI   : ({p:o} knd A → knd p)
+  | ¬kI   : (knd A → knd ⊥)
             → knd (¬ A)
 
   | ¬kE : knd (¬ A) -> knd A
@@ -119,8 +119,8 @@ LF ktrans : o -> o -> type =
 Translation context
 
 }%
-schema ctx = knd A ;
-schema nctx = nd A ;
+schema ctx = knd A;
+schema nctx = nd A;
 
 inductive Rel : {Γ:ctx} {Γ' : nctx} ctype =
   | empty : Rel [ ] [ ]
@@ -191,19 +191,19 @@ mlam A => mlam A* =>
 rec dnotx : Rel [Γ] [Γ'] → [Γ' ⊢ nd A] → [Γ' ⊢ nd (¬ (¬ A))] =
 fn rel => fn prf =>
   let [Γ' ⊢ D[]] = prf in
-  [Γ' ⊢ ¬I (\p. \u. ¬E u D[])]
+  [Γ' ⊢ ¬I (\u. ¬E u D[])]
 ;
 
 rec triple_neg_red : Rel [Γ] [Γ'] → [Γ' ⊢ nd (¬ (¬ (¬ A[])))] → [Γ' ⊢ nd (¬ A[])] =
 fn rel => fn prf =>
   let [Γ' ⊢ D[]] = prf in
-  [Γ' ⊢ ¬I (\p. \u. ¬E D[] (¬I (\q. \v. ¬E v u)))]
+  [Γ' ⊢ ¬I (\u. ¬E D[] (¬I (\v. ¬E v u)))]
 ;
 
-rec dneg_falser : Rel [Γ] [Γ'] → [Γ' ⊢ nd (¬ (¬ ⊥))] → [Γ' ⊢ nd C[]] =
+rec dneg_falser : Rel [Γ] [Γ'] → [Γ' ⊢ nd (¬ (¬ ⊥))] → [Γ' ⊢ nd ⊥] =
 fn rel => fn prf =>
   let [Γ' ⊢ D[]] = prf in
-  [Γ' ⊢ ¬E D[] (¬I \p. \u. (⊥E u))]
+  [Γ' ⊢ ¬E D[] (¬I \u. (⊥E u))]
 ;
 
 rec sound : Rel [Γ] [Γ'] → [Γ ⊢ knd A[]] → [ ⊢ ktrans A A*] → [Γ' ⊢ nd A*[]] =
@@ -217,17 +217,17 @@ fn rel => fn prf => fn kolm =>
     let [⊢ B*] = ktrans_of [⊢ B] in
     let [⊢ KB] = existsktrans [⊢ B] [⊢ B*] in
     let [Γ' ⊢ NJ1[]] = sound rel [Γ ⊢ NK1] [⊢ ktrans_∧I KA KB] in
-    [Γ' ⊢ ¬I (\p. \u.
+    [Γ' ⊢ ¬I (\u.
       ¬E NJ1[] (
-        ¬I (\q. \v.
+        ¬I (\v.
           ¬E (∧El v) u)))]
   | ([Γ ⊢ ∧kEr (NK1 : knd (A[] ∧ B[]))], [⊢ (KB : (ktrans B (¬(¬ B**))))]) =>
     let [⊢ A*] = ktrans_of [⊢ A] in
     let [⊢ KA] = existsktrans [⊢ A] [⊢ A*] in
     let [Γ' ⊢ NJ1[]] = sound rel [Γ ⊢ NK1] [⊢ ktrans_∧I KA KB] in
-    [Γ' ⊢ ¬I (\p. \u.
+    [Γ' ⊢ ¬I (\u.
       ¬E NJ1[] (
-        ¬I (\q. \v.
+        ¬I (\v.
           ¬E (∧Er v) u)))]
   | ([Γ ⊢ ⊃kI \u. (NKB : knd B[])], [⊢ ktrans_⊃I (KA : (ktrans A A*)) (KB : (ktrans B B*))]) =>
     let [Γ', v:nd A*[] ⊢ v] = sound (cons rel) [Γ, u:knd A[] ⊢ u] [⊢ KA] in
@@ -238,9 +238,9 @@ fn rel => fn prf => fn kolm =>
     let [⊢ KA] = existsktrans [⊢ A] [⊢ A*] in
     let [Γ' ⊢ NJA[]] = sound rel [Γ ⊢ NKA] [⊢ KA] in
     let [Γ' ⊢ NJI[]] = sound rel [Γ ⊢ NKI] [⊢ ktrans_⊃I KA KB] in
-    [Γ' ⊢ ¬I (\p. \u.
+    [Γ' ⊢ ¬I (\u.
       ¬E NJI[] (
-        ¬I (\q. \v. 
+        ¬I (\v. 
           ¬E (⊃E v NJA[]) u)))]
   | ([Γ ⊢ ∨kIl NK], [⊢ ktrans_∨I KA KB]) =>
     let [Γ' ⊢ NJ] = sound rel [Γ ⊢ NK] [⊢ KA] in
@@ -258,16 +258,16 @@ fn rel => fn prf => fn kolm =>
     let [Γ', vb:nd (¬(¬ B**[])) ⊢ vb] = sound (cons rel) [Γ, ub:knd B[] ⊢ ub] [⊢ KB] in
     let [Γ', va:nd (¬(¬ A**[])) ⊢ NJA[]] = sound (cons rel) [Γ, ua:knd A[] ⊢ NKA] [⊢ KC] in
     let [Γ', vb:nd (¬(¬ B**[])) ⊢ NJB[]] = sound (cons rel) [Γ, ub:knd B[] ⊢ NKB] [⊢ KC] in
-    [Γ' ⊢ ¬I (\p. \u.
+    [Γ' ⊢ ¬I (\u.
       ¬E NJ[] (
-        ¬I (\q. \v.
+        ¬I (\v.
           ¬E (∨E v (\va. NJA[]) (\vb.NJB[])) u)))]
-  %{| ([Γ ⊢ ¬kI \p. \u. NK1], [⊢ ktrans_¬I (K : (ktrans A A*))]) =>
-    let [⊢ kp] = existsktrans [⊢ ⊥] [⊢ ¬ (¬ ⊥)] in
+  | ([Γ ⊢ ¬kI \u. NK1], [⊢ ktrans_¬I (K : (ktrans A A*))]) =>
+    let [⊢ kp] = [⊢ ktrans_⊥] in
     let [Γ', v: nd A*[] ⊢ v] = sound (cons rel) [Γ, u:knd A[] ⊢ u] [⊢ K] in
-    let [Γ', v: nd A*[] ⊢ NJ1[..,_,_]] = sound (cons rel) [Γ, u: knd A[] ⊢ NK1[..,⊥,_]] [⊢ kp] in
-    let [Γ' ⊢ NJ1N[]] = dneg_falser rel [Γ'⊢ NJ1] in
-    dnotx rel [Γ' ⊢ ¬I (\p. \u. NJ1N[..,p])]}%
+    let [Γ', v: nd A*[] ⊢ NJ1[]] = sound (cons rel) [Γ, u:knd A[] ⊢ NK1] [⊢ kp] in
+    let [Γ' ⊢ NJ1N[]] = dneg_falser rel [Γ'⊢ NJ1[]] in
+    dnotx rel [Γ' ⊢ ¬I (\u. NJ1N[])]
   | ([Γ ⊢ ¬kE NK1 (NK2 : knd A[])], [⊢ KC]) =>
     let [⊢ A*] = ktrans_of [⊢ A] in
     let [⊢ KA] = existsktrans [⊢ A] [⊢ A*] in
@@ -275,6 +275,10 @@ fn rel => fn prf => fn kolm =>
     let [Γ' ⊢ NJ2] = sound rel [Γ ⊢ NK2] [⊢ KA] in
     let [Γ' ⊢ NJ1'] = triple_neg_red rel [Γ' ⊢ NJ1] in
     [Γ' ⊢ ¬E NJ1' NJ2]
+  | ([Γ ⊢ ¬¬kE (NK1 : knd (¬(¬ A[])))], [⊢ (K : (ktrans A (¬(¬ A**))))]) =>
+    let [⊢ KNA] = [⊢ ktrans_¬I (ktrans_¬I K)] in
+    let [Γ' ⊢ NJ1] = sound rel [Γ ⊢ NK1] [⊢ KNA] in
+    triple_neg_red rel (triple_neg_red rel (triple_neg_red rel [Γ' ⊢ NJ1]))
 ;
 
 rec nj_nk : Rel [Γ] [Γ'] → [Γ' ⊢ nd A[]] → [Γ ⊢ knd A[]] = 
@@ -308,9 +312,9 @@ fn rel => fn prf =>
     let [Γ, a: knd A[] ⊢ NK1] = nj_nk (cons rel) [Γ', a:nd _ ⊢ NJ1] in
     let [Γ, a: knd B[] ⊢ NK2] = nj_nk (cons rel) [Γ', a:nd _ ⊢ NJ2] in
     [Γ ⊢ ∨kE NK (\va.NK1) (\vb.NK2)]
-  %{| [Γ' ⊢ ¬I \p. \u. NJ] =>
-    let [Γ, a: knd A[] ⊢ NK] = nj_nk (cons rel) [Γ', a:nd _ ⊢ NJ[..]] in
-    [Γ' ⊢ ⊃kI \q. \v. NK]}%
+  | [Γ' ⊢ ¬I \u. NJ] =>
+    let [Γ, a: knd A[] ⊢ NK] = nj_nk (cons rel) [Γ', a:nd _ ⊢ NJ] in
+    [Γ ⊢ ¬kI \v. NK]
   | [Γ' ⊢ ¬E NJ1 NJ2] =>
     let [Γ ⊢ NK1] = nj_nk rel [Γ' ⊢ NJ1] in
     let [Γ ⊢ NK2] = nj_nk rel [Γ' ⊢ NJ2] in
@@ -324,19 +328,39 @@ fn rel => fn kolm => fn prf =>
     let [Γ ⊢ NKA] = equiv rel [⊢ KA] [Γ ⊢ ∧kEl (¬¬kE D)] in 
     let [Γ ⊢ NKB] = equiv rel [⊢ KB] [Γ ⊢ ∧kEr (¬¬kE D)] in
     [Γ ⊢ ∧kI NKA NKB]
-  %{| ([⊢ ktrans_⊃I KA KB], [Γ ⊢ (D : knd (¬(¬(A* ⊃ B*))))]) =>
+  %{
+  | ([⊢ ktrans_⊃I KA KB], [Γ ⊢ (D : knd (¬(¬(A* ⊃ B*))))]) =>
     let [Γ ⊢ NKAB[]] = [Γ ⊢ ¬¬kE D] in
-    [Γ ⊢ ⊃kI (\u.
-      let [Γ' ⊢ E] = sound rel [⊢ KA] [Γ ⊢ u] in
+    let [Γ, u: knd A[] ⊢ NKB'] = (fn u =>
+      case u of | [Γ ⊢ (u1: knd A[])] =>
+      let [Γ' ⊢ E] = sound rel [⊢ KA] [Γ ⊢ u1] in
       let [Γ ⊢ E'[]] = nj_nk rel [Γ' ⊢ E] in
-      let [Γ ⊢ NKB] = ⊃kE NKAB[] E'[] in
+      let [Γ ⊢ NKB] = [Γ ⊢ ⊃kE NKAB[] E'[]] in
       equiv rel [⊢ KB] [Γ ⊢ NKB])
-    ]}%
-  %{| ([⊢ ktrans_∨I KA KB], [Γ ⊢ (D : knd (¬(¬(A* ∨ B*))))]) =>
+    in
+    [Γ ⊢ ⊃kI \u. NKB']
+  | ([⊢ ktrans_∨I KA KB], [Γ ⊢ (D : knd (¬(¬(A* ∨ B*))))]) =>
     let [Γ ⊢ NKAB[]] = [Γ ⊢ ¬¬kE D] in
-    let [Γ ⊢ NKA[]] = equiv rel [⊢ KA] [Γ ⊢ ∨kIl NKAB[]] in
-    let [Γ ⊢ NKB[]] = equiv rel [⊢ KB] [Γ ⊢ ∨kIr NKAB[]] in
-    [Γ ⊢ ∨kE NKAB[] (\u. NKA[]) (\v.NKB[])]}%
+    let [Γ, u: knd A*[] ⊢ NKA[]] = (fn u =>
+      case u of | [Γ ⊢ (u1: knd A*[]) =>
+      let [Γ ⊢ NKA1[]] = equiv rel [⊢ KA] [Γ ⊢ u1] in
+      [Γ ⊢ ∨kIl NKA1[]]) in
+    let [Γ, u: knd B*[] ⊢ NKB[]] = (fn v =>
+      case v of | [Γ ⊢ (v1: knd B*[]) =>
+      let [Γ ⊢ NKB1[]] = equiv rel [⊢ KB] [Γ ⊢ v1] in
+      [Γ ⊢ ∨kIr NKB1[]]) 
+    in
+    [Γ ⊢ ∨kE NKAB[] (\u. NKA[]) (\v.NKB[])]
+  | ([⊢ ktrans_¬I KA], [Γ ⊢ (D : knd (¬(¬(¬ A*))))]) =>
+    let [Γ ⊢ NKNA[]] = [Γ ⊢ ¬¬kE D] in
+    let [Γ, u: knd A[] ⊢ NKP[]] = (fn u =>
+      case u of | [Γ ⊢ (u1: knd A[])] =>
+      let [Γ' ⊢ v1] = sound rel [⊢ KA] [Γ ⊢ u1] in
+      let [Γ ⊢ NKA1[]] = nj_nk rel [Γ' ⊢ v1] in
+      [Γ ⊢ ¬kE D NKA1[]]) 
+    in
+    [Γ ⊢ ¬kI \u. NKP[]]
+  }%
   | ([⊢ ktrans_⊤], [Γ ⊢ (D : knd (¬(¬ ⊤)))]) =>
     [Γ ⊢ ¬¬kE D]
   | ([⊢ ktrans_⊥], [Γ ⊢ (D : knd (¬(¬ ⊥)))]) =>
