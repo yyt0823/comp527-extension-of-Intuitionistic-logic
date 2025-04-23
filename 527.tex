@@ -581,10 +581,10 @@ Now with the help of our derivation rule, and lemma we can prove our soundness t
     \hspace{2em}
     \infer*[]{C}{\infer[v]{B}{}}
 }
-\quad\Longrightarrow\quad
+\quad\Rightarrow\quad
 \infer[\neg I^x]{\neg\neg C'}{
   \infer[\neg E]{\perp}{
-    \neg\neg (\neg\neg A' \lor \neg\neg B') \hspace{1.5em}
+    \neg\neg (\neg\neg A' \lor \neg\neg B') \hspace{-5em}
     \infer[\neg I^y]{\neg (\neg\neg A' \lor \neg\neg B')}{
       \infer[\neg E]{\perp}{
         \infer[\lor E^{u,v}]{\neg\neg C'}{

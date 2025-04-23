@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  23 APR 2025 14:19
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  23 APR 2025 17:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -686,545 +686,110 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 34.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 
+LaTeX Warning: Citation `brown1998kolmogorov' on page 1 undefined on input line 40.
+
+
+
 [1
 
 ]
+Missing character: There is no ⊢ (U+22A2) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ⊢ (U+22A2) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ⊢ (U+22A2) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono10-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono10-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono10-regular]:!
+
+Overfull \hbox (35.89998pt too wide) in paragraph at lines 60--60
+ []      \TU/lmtt/m/n/10 rec existsktrans : {A : [⊢ o]} {A* : [⊢ o]} [⊢ ktrans A A*][] 
+ []
+
+Missing character: There is no ⊢ (U+22A2) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ⊢ (U+22A2) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ⊢ (U+22A2) in font [lmroman10-bold]:mapping=tex-text;!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono10-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono10-regular]:!
+
+Overfull \hbox (22.59998pt too wide) in paragraph at lines 73--73
+ []      \TU/lmtt/m/n/10 rec nj_nk : Rel [Γ] [Γ[]] → [Γ[] ⊢ nd A[]] → [Γ ⊢ knd A[]][] 
+ []
+
+Missing character: There is no ⊢ (U+22A2) in font [lmmono10-regular]:!
+Missing character: There is no ⊢ (U+22A2) in font [lmmono10-regular]:!
+
+Overfull \hbox (38.34998pt too wide) in paragraph at lines 80--80
+ []      \TU/lmtt/m/n/10 rec equiv : Rel [Γ] [Γ[]] → [⊢ ktrans A A*] → [Γ ⊢ knd A*[]][] 
+ []
+
+Missing character: There is no ⊢ (U+22A2) in font [lmmono10-regular]:!
+
 
 [2]
+Overfull \hbox (30.84001pt too wide) in paragraph at lines 91--92
+\TU/lmr/m/n/10 Our Beluga implementation demonstrates the expressiveness and utility of dependently-
+ []
+
+
+Overfull \hbox (29.80739pt too wide) detected at line 150
+[] [] []
+ []
+
+
 
 [3]
 
 [4]
 
 [5]
-Overfull \hbox (56.68361pt too wide) detected at line 499
-[]  [][]\OMS/cmsy/m/n/10 )  []
+
+[6]
+
+[7]
+Overfull \hbox (18.77414pt too wide) detected at line 544
+[]  \OMS/cmsy/m/n/10 )  []
  []
 
 
 
-[6]
-Overfull \hbox (50.74278pt too wide) in paragraph at lines 582--590
+[8]
+Overfull \hbox (88.64221pt too wide) detected at line 602
+[]  \OMS/cmsy/m/n/10 )  []
+ []
+
+
+
+[9]
+Overfull \hbox (50.74278pt too wide) in paragraph at lines 677--685
 []\TU/lmr/bx/n/10 Induction hypothesis (IH). \TU/lmr/m/n/10 For every proper subformula $\OML/cmm/m/it/10 B$ \TU/lmr/m/n/10 of $\OML/cmm/m/it/10 A$\TU/lmr/m/n/10 , $[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 B; B[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ;  \OMS/cmsy/m/n/10 `[]
  []
 
 
 LaTeX Font Warning: Font shape `TU/lmr/bx/sc' undefined
-(Font)              using `TU/lmr/bx/n' instead on input line 605.
+(Font)              using `TU/lmr/bx/n' instead on input line 700.
 
 
 LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
-(Font)              using `U/stmry/m/n' instead on input line 605.
+(Font)              using `U/stmry/m/n' instead on input line 700.
 
-
-
-[7]
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-
-
-[8]
-Missing character: There is no ∀ (U+2200) in font [lmmono8-regular]:!
-Missing character: There is no ∀ (U+2200) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∀ (U+2200) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∃ (U+2203) in font [lmmono8-regular]:!
-Missing character: There is no ∃ (U+2203) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∃ (U+2203) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∀ (U+2200) in font [lmmono8-regular]:!
-Missing character: There is no ∃ (U+2203) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-
-
-[9]
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
 
 
 [10]
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
+LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10> not available
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 762.
+
+Missing character: There is no ⟶ (U+27F6) in font [lmroman10-italic]:mapping=tex-text;!
 
 
 [11]
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
+Missing character: There is no ⟶ (U+27F6) in font [lmroman10-italic]:mapping=tex-text;!
 
 
 [12]
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
+No file 527.bbl.
 
 
 [13]
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∧ (U+2227) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊃ (U+2283) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ∨ (U+2228) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊤ (U+22A4) in font [lmmono8-regular]:!
-
-
-[14]
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊥ (U+22A5) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-Missing character: There is no ⊢ (U+22A2) in font [lmmono8-regular]:!
-
-
-[15]
-runsystem(latexminted cleantemp  --timestamp 20250423141940 13F320E7B5EAD1024AC95C3B208610DB)...executed safely (allowed).
+runsystem(latexminted cleantemp  --timestamp 20250423171135 13F320E7B5EAD1024AC95C3B208610DB)...executed safely (allowed).
 
  (./527.aux)
  ***********
@@ -1235,14 +800,17 @@ L3 programming layer <2025-01-18>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 23449 strings out of 473832
- 539753 string characters out of 5729482
- 1569224 words of memory out of 5000000
- 46102 multiletter control sequences out of 15000+600000
- 570327 words of font info for 105 fonts, out of 8000000 for 9000
+ 23464 strings out of 473832
+ 540177 string characters out of 5729482
+ 1050224 words of memory out of 5000000
+ 46112 multiletter control sequences out of 15000+600000
+ 570351 words of font info for 108 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 102i,43n,107p,504b,1483s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,43n,107p,504b,497s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on 527.pdf (15 pages).
+Output written on 527.pdf (13 pages).
