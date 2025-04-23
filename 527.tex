@@ -1,0 +1,1007 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, mathrsfs, stmaryrd,amsthm}
+\usepackage{array}
+\usepackage{proof}
+\usepackage{bussproofs}
+\usepackage{tikz}
+\newtheorem{lemma}{Lemma}
+\usepackage{mathtools}    
+\usepackage{fontspec}     
+\usepackage{minted}    
+\usepackage{listings}
+\usepackage{enumitem}    
+    
+
+\lstset{
+  basicstyle=\ttfamily\scriptsize,
+  breaklines=true,
+  columns=fullflexible
+}
+
+     
+\usetikzlibrary{cd}
+\renewcommand{\baselinestretch}{1.2}
+
+
+\title{Extend the Intuitionistic Logic Natural Deduction with Kolmogorov Double Negation}
+\author{Yantian Yin \\ Yifei Che}
+\date{}
+
+\begin{document}
+
+
+
+\maketitle
+
+\section{Introduction}
+
+Kolmogorov's double-negation translation provides a powerful method for interpreting classical logic within the framework of intuitionistic logic. This translation allows classical theorems to be rephrased in a form acceptable to constructive reasoning, bridging the gap between two foundational views of logic. 
+
+Previous work by Brown~\cite{brown1998kolmogorov} presents a mechanization of this interpretation in the Twelf logical framework, including formalized translations of derivations and proofs of soundness and completeness. However, Twelf lacks certain computational expressiveness and modular reasoning capabilities that are desirable for exploring recursive proof transformations.
+
+In this project, we re-implement Brown's Kolmogorov interpretation in the \textbf{Beluga} proof environment. Beluga offers native support for recursive functions over contextual objects and enables computation over LF terms and derivations. These features allow us to define translations and verify meta-theoretical properties more naturally and effectively.
+
+Our work focuses on the functional translation of classical formulas and derivations, their transformation into intuitionistic proofs, and the verification of soundness and completeness within the Beluga system. Through this implementation, we aim to highlight Beluga’s strengths in mechanizing meta-theoretic reasoning about logic systems.
+
+\section{Approach and Contribution}
+
+\paragraph{Goal.} Our main goal is to formalize Kolmogorov's translation from classical natural deduction to intuitionistic natural deduction in Beluga, and to prove the \textit{soundness} and \textit{completeness} of this translation constructively.
+
+\paragraph{Approach.} We adopt the following methodology:
+\begin{enumerate}
+    \item Define a functional translation of formulas from classical to intuitionistic logic (Kolmogorov translation) using LF type \textbf{LF ktrans : o -> o -> type} (we call it kolm in paper proof). Also define the inference rules of ktrans to allow derivation.
+    \item Prove \textbf{soundness}: every classical derivation (after translation) yields a valid intuitionistic proof of the given translated formula \textbf{ rec sound : Rel [Γ] [Γ'] → [Γ ⊢ knd A[]] → [ ⊢ ktrans A A*] → [Γ' ⊢ nd A*[]]}. It's also based on two lemmas:
+    \begin{enumerate}
+      \item \textbf{Existence of Kolmogorov Translation}  
+      For every formula $A$, there exists an formula $A^*$ such that $\textsf{kolm}(A, A^*)$ holds.  
+      \textit{Beluga setup:}
+      \begin{verbatim}
+      rec existsktrans : {A : [⊢ o]} {A* : [⊢ o]} [⊢ ktrans A A*]
+      \end{verbatim}
+    
+      \item \textbf{Double Negation Property}  
+      All Kolmogorov Translation of a formula contains a double negation. 
+    \end{enumerate}
+    Then we can be free to use Hypothesis Induction, ¬I rule and ¬E rule to prove soundness.
+    \item Prove \textbf{completeness}: for every intuitionistic proof of a  translated formula, there exists a corresponding classical derivation. \textbf{rec equiv : Rel [Γ] [Γ'] → [⊢ ktrans A A*] → [Γ ⊢ knd A*[]] → [Γ ⊢ knd A[]]}. It's also based on two lemmas:
+    \begin{enumerate}
+      \item \textbf{Back-Translation Lemma}  
+      If we can prove intuitionistic formula $A$, a proof of classical formula $A$ exists.  
+      \textit{Beluga setup:}
+      \begin{verbatim}
+      rec nj_nk : Rel [Γ] [Γ'] → [Γ' ⊢ nd A[]] → [Γ ⊢ knd A[]]
+      \end{verbatim}
+    
+      \item \textbf{Kolmogorov Equivalence Lemma}  
+      If $A^*$ is the Kolmogorov translation of $A$, and $A^*$ is provable in classical natural deduction, thenthen the original formula $A$ is also provable in classical natural deduction.
+      \begin{verbatim}
+      rec equiv : Rel [Γ] [Γ'] → [⊢ ktrans A A*] → [Γ ⊢ knd A*[]] 
+      → [Γ ⊢ knd A[]]
+      \end{verbatim}
+    \end{enumerate}
+    Then all cases of completeness can be proved in the same way by using these two lemmas.
+\end{enumerate}
+
+\paragraph{Contribution.} This work contributes:
+\begin{itemize}
+    \item A mechanized and executable implementation of Kolmogorov translation in Beluga.
+    \item Proof of lemmas and inference rules needed using recursive functions.
+    \item A constructive proof of soundness and completeness of the Kolmogorov embedding in Beluga.
+\end{itemize}
+Our Beluga implementation demonstrates the expressiveness and utility of dependently-typed meta-programming for logic translation and proof theory.
+
+\section{Idea}
+
+The key difference between intuitionistic logic and classical logic lies in the acceptance of the law of excluded middle. Our goal is to explore the connection between the two systems, showing that they are essentially equivalent under double negation translation.
+
+
+\subsection{Nature Deduction}
+For the natural deduction we have these rules for
+ introduction and elimination.
+
+\[
+\infer[\land I]{A \land B}{A & B}
+\hspace{3cm}
+\infer[\land E_L]{A}{A \land B}
+\quad
+\infer[\land E_R]{B}{A \land B}
+\]
+
+
+% Row 2: →I, →E
+\[
+\infer[\supset I^u]{A \supset B}{
+  \infer*{B}{\infer [u]{A}{}}
+}
+\hspace{3cm}
+\infer[\supset E]{B}{A \supset B & A}
+\]
+
+
+
+% Row 3: ∨I, ∨E
+\[
+\infer[\lor I_L]{A \lor B}{A}
+\quad
+\infer[\lor I_R]{A \lor B}{B}
+\hspace{2cm}
+\infer[\lor E^{u_1, u_2}]{C}{
+  A \lor B
+  \quad
+  \infer*{C}{\infer[u_1]{A}{}}
+  \quad
+  \infer*{C}{\infer[u_2]{B}{}}
+}
+\]
+
+% Row 4: ¬I, ¬E
+\[
+\infer[\neg I^{u}]{\neg A}{
+  \infer*{\perp}{\infer[u]{A}{}}
+}
+\qquad
+\parbox{0.45\linewidth}{\footnotesize
+  For convenience, we instantiate this rule with $\perp$ rather than an arbitrary proposition $p$, since $\perp \rightarrow p$ holds intuitionistically.
+}
+\hspace{3cm}
+\infer[\neg E]{C}{
+   A & \neg A
+}
+\]
+
+% Row 5: ⊤I, ⊥E
+\[
+\infer[\top I]{\top}{}
+\hspace{3cm}
+\infer[\perp E]{C}{\perp}
+\]
+Natural deduction (ND) corresponds to intuitionistic logic because it does not enforce that every proposition has a fixed complement. For example, if we apply \emph{negation introduction} ($\neg I$) to a proposition $A$ and derive $\neg A$, we cannot simply repeat this process on $\neg A$ to recover $A$. This asymmetry is a key reason why ND is not classical logic.
+
+To extend ND into classical logic, we need to incorporate the law of excluded middle. One way to do this is by adding the \emph{Kolmogorov double negation rule}, which allows us to derive $A$ from $\neg\neg A$. We refer to this rule as $\neg\neg\text{k}E$ (short for \emph{not Kolmogorov double Elimination}, or \textbf{nkdE}). With this rule added, we define a new system—ND plus the Kolmogorov rule—which we call \textbf{KND}.
+
+To fully complete KND as classical logic, we must also specify the unique complement of $\top$, which is $\bot$. We treat $\bot$ as an atomic formula. With these additions, KND forms a proper classical logic system.
+
+\[
+\infer[\neg\neg_{k}E]{A}{\neg\neg A}
+\]
+
+\begin{center}
+    \fbox{%
+  \begin{minipage}{0.8\textwidth}
+\[
+\infer[\neg\neg kE]{A \lor \neg A}{
+  \infer[\neg kI^{u}]{\neg\neg(A\lor\neg A)}{
+    \infer[\neg kE]{\bot}{
+      % First assumption subproof u
+      \infer[u]{\neg(A\lor\neg A)}{}
+      \quad
+      % Disjunction introduction on ¬A
+      \infer[\lor kI_2]{A \lor \neg A}{
+        % Nested negation introduction subproof p,ν
+        \infer[\neg kI^{u}]{\neg A}
+        {
+          \infer[\neg kE]{\bot}{
+            % Disjunction introduction on A
+            \infer[u]{\neg(A\lor\neg A)}{}
+            \quad
+            % Reuse assumption u
+            \infer[\lor kI_1]{A \lor \neg A}{
+              \infer[\nu]{A}{}
+            }
+          }
+        }
+      }
+    }
+  }
+}
+\]
+\end{minipage}%
+}
+\\
+\vspace{1em}
+prove of excluding middle
+
+\end{center}
+
+
+
+
+
+Now in our hand we have the intuitionistic logic ND
+ and classical logic KND. We show that both these two
+  logics are "the same" by proving that for any logical formula provable in KND it can also be proven in ND (soundness) and any logical formula provable in ND can also be proven in KND (completeness).
+
+To do this first we need to define a translation function that translates formulas in ND or KND to their counterparts. We use the ktrans--Kolmogorov translation and it is defined as ($n$ for $\neg\neg$):
+
+\begin{align*}
+A^* &= nA \quad \text{if } A \text{ is atomic} \\
+(A \land B)^* &= n(A^* \land B^*) \\
+(A \supset B)^* &= n(A^* \supset B^*) \\
+(A \lor B)^* &= n(A^* \lor B^*) \\
+(\neg A)^* &= n(\neg A^*) \\
+\top^* &= n\top \\
+\bot^* &= n\bot
+\end{align*}
+
+
+\section{Kolm rules}
+
+% ------------------ helpers ---------------------------------
+\newcommand{\kolm}{\mathsf{kolm}}   % typeset in sans-serif math
+\newcommand{\nneg}{\neg\neg}        % short for double negation
+% ------------------------------------------------------------
+
+\[
+\infer[\kolm_{\land}]
+  {\kolm (A \land B)\; \nneg (A^{*} \land B^{*})}
+  {
+    \kolm A\; A^{*}
+    &
+    \kolm B\; B^{*}
+  }
+\]
+
+\[
+\infer[\kolm_{\supset}]
+  {\kolm (A \supset B)\; \nneg (A^{*} \supset B^{*})}
+  {
+    \kolm A\; A^{*}
+    &
+    \kolm B\; B^{*}
+  }
+\]
+
+\[
+\infer[\kolm_{\lor}]
+  {\kolm (A \lor B)\; \nneg (A^{*} \lor B^{*})}
+  {
+    \kolm A\; A^{*}
+    &
+    \kolm B\; B^{*}
+  }
+\]
+
+\[
+\infer[\kolm_{\neg}]
+  {\kolm (\neg A)\; \nneg (\neg A^{*})}
+  {
+    \kolm A\; A^{*}
+  }
+\]
+
+\[
+\infer[\kolm_{\top}]
+  {\kolm \top\; \nneg \top}
+  {}
+\]
+
+\[
+\infer[\kolm_{\bot}]
+  {\kolm \bot\; \nneg \bot}
+  {}
+\]
+
+\section{Inference Rules}
+Before we step into the proof of soundness and completeness we need some 
+inference rules to help us eliminate double negation in ND.
+
+First, since we can prove $\neg\neg A$ from $A$ in ND we 
+have the inference rule $\neg\neg X$. Same with $\neg\neg_{k}X$.
+
+Also we can eliminate $\neg\neg\neg A$ to $\neg A$, we make 
+it as $\neg\neg\neg R$.
+
+% First boxed derivation
+\[
+\infer[\neg I^{u}]{\neg\neg A}{
+    \infer[\neg E]{\bot}{
+        \infer [u]{\neg A}{} & A
+    }
+}
+\quad \Rightarrow \quad
+\fbox{$
+    \infer[\neg \neg X]{\neg \neg A}{ A}
+$}
+\]
+
+% Third boxed derivation
+\[
+    \infer[\neg I^{u}]{\neg A}{
+        \infer[\neg E]{\bot}{ 
+              \infer[\neg \neg X]{\neg \neg A}{\infer[u]{A}{}} &
+              \infer[v]{\neg \neg \neg A}{}
+        }
+      }
+\quad \Rightarrow \quad
+\fbox{$
+    \infer [\neg \neg \neg R]
+    {\neg A}
+    {\neg\neg \neg A} 
+$}
+\]
+
+% Fourth boxed derivation
+% Fourth boxed derivation  (re‑done for dneg_falser)
+\[
+\infer[\bot E]{C}{
+  \infer[\neg E]{\bot}{
+    \neg\neg\bot
+    &
+    \infer[\neg I^{u}]{\neg\bot}{
+      \infer[u]{\bot}{}
+    }
+  }
+}
+\quad \Rightarrow \quad
+\fbox{$
+  \infer[\neg\neg\bot E]{C}{\neg\neg\bot}
+$}
+\]
+
+
+\section{Lemma}
+\begin{lemma}[Existence of Kolmogorov Translation]\label{lem:exists-kolm}
+  For every propositional formula $A$ (built from atoms with
+  $\neg$, $\land$, $\lor$, and $\supset$), there exists a formula
+  $A^{\!*}$—its Kolmogorov translation—such that
+  \[
+    \operatorname{kolm}(A,A^{\!*})
+  \]
+  holds.
+  \end{lemma}
+  
+  \begin{proof}
+  Define $A^{\!*}$ by structural induction on $A$:
+  \[
+  \begin{array}{rcl@{\qquad}l}
+  p^{\!*}              &\coloneqq& \neg\neg p &(\text{$p$ atomic})\\[4pt]
+  \top^{\!*}           &\coloneqq& \neg \neg \top\\
+  \bot^{\!*}           &\coloneqq& \neg \neg \bot\\[4pt]
+  (A \land B)^{\!*}    &\coloneqq& \neg\neg\bigl(A^{\!*}\land B^{\!*}\bigr)\\
+  (A \lor  B)^{\!*}    &\coloneqq& \neg\neg\bigl(A^{\!*}\lor  B^{\!*}\bigr)\\
+  (A \supset B)^{\!*}  &\coloneqq& \neg\neg\bigl(A^{\!*}\supset B^{\!*}\bigr)\\
+  (\neg A)^{\!*}       &\coloneqq& \neg\neg\neg A^{\!*}
+  
+  \end{array}
+  \]
+  
+  \noindent
+  \textbf{Base case.}  If $A$ is atomic ($A=p$), set $A^{\!*}=\neg\neg p$; then
+  $\operatorname{kolm}(p,\neg\neg p)$ is immediate. Same with $\top$ and $\bot$
+  
+  \smallskip
+  \noindent
+  \textbf{Inductive step.}  Assume $A^{\!*}$ and $B^{\!*}$ already exist.
+  The table above defines translations for each composite constructor,
+  and the corresponding $\operatorname{kolm}$ derivations follow from
+  the induction hypotheses.
+  
+  \smallskip
+  Since the construction terminates for every syntax tree, the
+  mapping $A\mapsto A^{\!*}$ is total; hence
+  $\operatorname{kolm}(A,A^{\!*})$ holds for all formulas $A$.
+  \end{proof}
+
+
+  \begin{lemma}[Every Kolmogorov image is a double negation]
+    \label{lem:outer-dneg}
+    Let $A$ and $B$ be propositional formulas.
+    If \(\operatorname{kolm}(A,B)\) holds, then there exists a formula
+    \(C\) such that
+    \[
+       B \;=\; \neg\neg C
+       \quad\text{and}\quad
+       \operatorname{kolm}(A,C).
+    \]
+    \end{lemma}
+    
+    \begin{proof}
+    Proceed by induction on the derivation of \(\operatorname{kolm}(A,B)\).
+    
+    \smallskip
+    \emph{Atomic case.}  
+    If \(A=p\) and the derivation ends with the rule for atoms, we have
+    \(B=\neg\neg p\).  
+    Set \(C:=p\).  
+    Then \(\operatorname{kolm}(p,C)\) is the very last step of the given
+    derivation, so the claim holds. Similary with $\top$ and $\bot$
+    
+    \smallskip
+    \emph{Conjunction.}  
+    Suppose \(\operatorname{kolm}(A\land B_0,\,B)\) is derived via
+    \[
+       B \;=\; \neg\neg\bigl(D_1\land D_2\bigr),
+       \qquad
+       \operatorname{kolm}(A,D_1),
+       \qquad
+       \operatorname{kolm}(B_0,D_2).
+    \]
+    Take \(C := D_1\land D_2\).
+    Both sub‑derivations satisfy the induction hypothesis, hence
+    \(\operatorname{kolm}(A\land B_0,C)\) holds and
+    \(B=\neg\neg C\).
+    
+    \smallskip
+    \emph{Disjunction and implication.}  
+    The arguments are identical: each rule in the definition of
+    \(\operatorname{kolm}\) produces the outer pattern
+    \(\neg\neg(\,\cdot\,)\), so we peel off that pair of negations and
+    re‑assemble the inner sub‑translations using the induction hypothesis.
+    
+    \smallskip
+    \emph{Negation.}  
+    From \(\operatorname{kolm}(\neg A_0,B)\) we get
+    \(B=\neg\neg\neg D\) with \(\operatorname{kolm}(A_0,D)\).
+    Let \(C := \neg D\); then again \(B=\neg\neg C\) and
+    \(\operatorname{kolm}(\neg A_0,C)\).
+    
+    \smallskip
+    Thus every derivation of \(\operatorname{kolm}(A,B)\) factors through
+    an inner formula \(C\) with \(B=\neg\neg C\), proving the claim.
+    \end{proof}
+    
+
+
+
+\section{Soundness}
+
+Now with the help of our derivation rule, and lemma we can prove our soundness theorem. We do structural proof on the last used operation.
+
+\text{Case:}
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\land kI]{A \land^k B}{A & B}
+\quad \Rightarrow \quad
+\infer[\neg\neg X]{\neg\neg(\neg\neg A' \land \neg\neg B')}{
+    \infer[\land I]{\neg\neg A' \land \neg\neg B'}{
+      \neg\neg A' & \neg\neg B'
+    }
+}
+\]
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\land kE1]{A}{
+  A \land^k B
+}
+\quad \Rightarrow \quad
+\infer[\neg I^{v}]{\neg \neg A'}{ 
+  \infer[\neg E]{\perp}{
+    \neg \neg (\neg \neg A' \land \neg \neg B')
+    \hspace{1em}
+    \infer[\neg I^{u}]{\neg (\neg \neg A' \land \neg \neg B')}{
+      \infer[\land E1]{\neg \neg A'}{
+         {\infer[u]{\neg \neg A' \land \neg \neg B'}{}}
+      }
+      \infer[v]{\neg A'}{}
+    }
+  }
+}
+\]
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\land kE2]{B}{
+  A \land^k B
+}
+\quad \Rightarrow \quad
+\infer[\neg I^{v}]{\neg \neg B'}{ 
+  \infer[\neg E]{\perp}{
+    \neg \neg (\neg \neg A' \land \neg \neg B')
+    \hspace{1em}
+    \infer[\neg I^{u}]{\neg (\neg \neg A' \land \neg \neg B')}{
+      \infer[\land E2]{\neg \neg B'}{
+        {\infer[u]{\neg \neg A' \land \neg \neg B'}{}}
+      }
+      \infer[v]{\neg B'}{}
+    }
+  }
+}
+\]
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\supset k I^u]{A \supset^k B}{
+  \infer*[]{B}{
+    \infer[u]{A}{}
+  }
+}
+\quad \Rightarrow \quad
+\infer[\neg \neg X]{\neg \neg(\neg \neg A' \supset \neg \neg B')}{
+  \infer[\supset I^u]{\neg \neg A' \supset \neg \neg B'}{
+    \infer*[]{\neg \neg B'}{
+      \infer[u]{\neg \neg A'}{}
+    }
+  }
+}
+\]
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\supset kE]{B}{
+  A \supset^k B \quad A
+}
+\quad \Rightarrow \quad
+\infer[\neg I^{v}]{\neg \neg B'}{
+  \infer[\neg E]{\perp}{
+    \neg \neg (\neg \neg A' \supset \neg \neg B')
+    \hspace{1em}
+    \infer[\neg I^{u}]{\neg (\neg \neg A' \supset \neg \neg B')}{
+      \infer[\neg E]{\perp}{
+        \infer[\supset E]{\neg \neg B'}{
+          {\infer[u]{\neg \neg A' \supset \neg \neg B'}{}} \quad \neg \neg A'
+        }
+        \infer[v]{\neg B'}{}
+      }
+    }
+  }
+}
+\]
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\lor kI1]{A \lor^k B}{A}
+\quad \Rightarrow \quad
+\infer[\neg \neg X]{\neg \neg(\neg \neg A' \lor \neg \neg B')}{
+    \infer[\lor I1]{\neg \neg A' \lor \neg \neg B'}{
+        \neg \neg A'
+        \infer[]{}{}
+    }
+}
+\]
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\lor kI2]{A \lor^k B}{B}
+\quad \Rightarrow \quad
+\infer[\neg \neg X]{\neg \neg(\neg \neg A' \lor \neg \neg B')}{
+    \infer[\lor I2]{\neg \neg A' \lor \neg \neg B'}{
+        \neg \neg B'
+        \infer[]{}{}
+    }
+}
+\]
+
+
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\lor kE^{u,v}]{C}{
+    A \lor^k B
+    \hspace{2em}
+    \infer*[]{C}{\infer[u]{A}{}}
+    \hspace{2em}
+    \infer*[]{C}{\infer[v]{B}{}}
+}
+\quad\Rightarrow\quad
+\infer[\neg I^x]{\neg\neg C'}{
+  \infer[\neg E]{\perp}{
+    \neg\neg (\neg\neg A' \lor \neg\neg B') \hspace{-5em}
+    \infer[\neg I^y]{\neg (\neg\neg A' \lor \neg\neg B')}{
+      \infer[\neg E]{\perp}{
+        \infer[\lor E^{u,v}]{\neg\neg C'}{
+          {\infer[y]{\neg\neg A' \lor \neg\neg B'}{}} \hspace{1em}
+          \infer*[]{\neg\neg C'}{\infer[u]{\neg\neg A'}{}}
+          \hspace{1em}
+          \infer*[]{\neg\neg C'}{\infer[v]{\neg\neg B'}{}}
+        }
+        \hspace{1em}
+        {\infer[x]{\neg\neg C'}{}}
+      }
+    }
+  }
+}
+\]
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\neg kI^u]{\neg A}{
+  \infer*[]{\bot}{\infer[u]{A}{}}
+}
+\quad \Rightarrow \quad
+\infer[\neg I^v]{\neg\neg\neg A'}{
+  \infer[\neg\neg\bot E]{\bot}{
+    \infer[v]{\neg\neg A'}{}
+    \hspace{2em}
+    \infer*[]{\neg\neg\bot}{\infer[u]{A'}{}}
+  }
+}
+\]
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\neg kE]{C}{
+  \neg A \quad A
+}
+\quad \Rightarrow \quad
+\infer[\neg E]{C'}{
+    \infer[\neg\neg\neg R]{\neg A'}{
+      \neg\neg\neg A'
+    }
+  \quad
+  \infer{A'}{}
+}
+\]
+
+
+
+\vspace{3em}
+\text{Case:}
+\[
+\infer[\neg\neg E]{A}{
+    \neg\neg A
+}
+\quad \Rightarrow \quad
+\infer[\neg\neg\neg R]{
+  \neg\neg A'
+}{
+  \infer[\neg\neg\neg R]{
+    \neg\neg\neg\neg A'
+  }{
+    \infer[\neg\neg\neg R]{
+      \neg\neg\neg\neg\neg\neg A'
+    }{
+      \neg\neg\neg\neg\neg\neg\neg\neg A'
+    }
+  }
+}
+\]
+
+
+
+
+
+
+
+
+
+
+
+\section{Completeness}
+    \begin{lemma}[Back-Translation Lemma]
+    If \(\Gamma' \vdash_{\textit{ND}} A\), then \(\Gamma \vdash_{\textit{KND}} A\), where \(\Gamma'\) and \(\Gamma\) are related by a context translation.
+    \end{lemma}
+    
+    \begin{proof}
+    We proceed by structural induction on the derivation \( \Gamma' \vdash_{\textit{ND}} A \).
+    
+    \paragraph{Case \(\land I\):}
+    
+    \[
+    \infer[\land I]{\Gamma' \vdash A_1 \land A_2}{
+      \Gamma' \vdash A_1 \quad \Gamma' \vdash A_2
+    }
+    \]
+    
+    By IH, we have:
+    
+    \[
+    \Gamma \vdash_{\textit{KND}} A_1 \quad \Gamma \vdash_{\textit{KND}} A_2
+    \]
+    
+    Then we conclude:
+    
+    \[
+    \infer[\land^k I]{\Gamma \vdash A_1 \land A_2}{
+      \Gamma \vdash A_1 \quad \Gamma \vdash A_2
+    }
+    \]
+    
+    \paragraph{Case \(\land E_1\):}
+    
+    \[
+    \infer[\land E_1]{\Gamma' \vdash A_1}{
+      \Gamma' \vdash A_1 \land A_2
+    }
+    \quad \text{via IH} \Rightarrow
+    \infer[\land^k E_1]{\Gamma \vdash A_1}{
+      \Gamma \vdash A_1 \land A_2
+    }
+    \]
+    
+    \paragraph{Case \(\land E_2\):}
+    
+    \[
+    \infer[\land E_2]{\Gamma' \vdash A_2}{
+      \Gamma' \vdash A_1 \land A_2
+    }
+    \quad \text{via IH} \Rightarrow
+    \infer[\land^k E_2]{\Gamma \vdash A_2}{
+      \Gamma \vdash A_1 \land A_2
+    }
+    \]
+    
+    \paragraph{Case \(\supset I\):}
+    
+    \[
+    \infer[\supset I]{\Gamma' \vdash A_1 \supset A_2}{
+      \Gamma', x:A_1 \vdash A_2
+    }
+    \quad \text{IH} \Rightarrow \Gamma, x:A_1 \vdash_{\textit{KND}} A_2
+    \Rightarrow
+    \infer[\supset^k I]{\Gamma \vdash A_1 \supset A_2}{
+      \Gamma, x:A_1 \vdash A_2
+    }
+    \]
+    
+    \paragraph{Case \(\supset E\):}
+    
+    \[
+    \infer[\supset E]{\Gamma' \vdash B}{
+      \Gamma' \vdash A_1 \supset B \quad \Gamma' \vdash A_1
+    }
+    \Rightarrow
+    \infer[\supset^k E]{\Gamma \vdash B}{
+      \Gamma \vdash A_1 \supset B \quad \Gamma \vdash A_1
+    }
+    \]
+    
+    \paragraph{Case \(\lor I_1\):}
+    
+    \[
+    \infer[\lor I_1]{\Gamma' \vdash A_1 \lor A_2}{
+      \Gamma' \vdash A_1
+    }
+    \Rightarrow
+    \infer[\lor^k I_1]{\Gamma \vdash A_1 \lor A_2}{
+      \Gamma \vdash A_1
+    }
+    \]
+    
+    \paragraph{Case \(\lor I_2\):}
+    
+    \[
+    \infer[\lor I_2]{\Gamma' \vdash A_1 \lor A_2}{
+      \Gamma' \vdash A_2
+    }
+    \Rightarrow
+    \infer[\lor^k I_2]{\Gamma \vdash A_1 \lor A_2}{
+      \Gamma \vdash A_2
+    }
+    \]
+    
+    \paragraph{Case \(\lor E\):}
+    
+    \[
+    \infer[\lor E]{\Gamma' \vdash C}{
+      \Gamma' \vdash A_1 \lor A_2 \quad
+      \Gamma', x:A_1 \vdash C \quad
+      \Gamma', x:A_2 \vdash C
+    }
+    \]
+    
+    By IH:
+    
+    \[
+    \Gamma \vdash A_1 \lor A_2 \quad \Gamma, x:A_1 \vdash C \quad \Gamma, x:A_2 \vdash C
+    \Rightarrow
+    \infer[\lor^k E]{\Gamma \vdash C}{
+      \Gamma \vdash A_1 \lor A_2 \quad
+      \Gamma, x:A_1 \vdash C \quad
+      \Gamma, x:A_2 \vdash C
+    }
+    \]
+    
+    \paragraph{Case \(\neg I\):}
+    
+    \[
+    \infer[\neg I]{\Gamma' \vdash \neg A}{
+      \Gamma', x:A \vdash \bot
+    }
+    \Rightarrow
+    \Gamma, x:A \vdash \bot \Rightarrow
+    \infer[\neg^k I]{\Gamma \vdash \neg A}{
+      \Gamma, x:A \vdash \bot
+    }
+    \]
+    
+    \paragraph{Case \(\neg E\):}
+    
+    \[
+    \infer[\neg E]{\Gamma' \vdash \bot}{
+      \Gamma' \vdash \neg A \quad \Gamma' \vdash A
+    }
+    \Rightarrow
+    \infer[\neg^k E]{\Gamma \vdash \bot}{
+      \Gamma \vdash \neg A \quad \Gamma \vdash A
+    }
+    \]
+    
+    \paragraph{Case \(\top I\):}
+    
+    \[
+    \infer[\top I]{\Gamma' \vdash \top}{} \Rightarrow
+    \infer[\top^k I]{\Gamma \vdash \top}{}
+    \]
+    
+    \paragraph{Case \(\bot E\):}
+    
+    \[
+    \infer[\bot E]{\Gamma' \vdash A}{
+      \Gamma' \vdash \bot
+    }
+    \Rightarrow
+    \infer[\bot^k E]{\Gamma \vdash A}{
+      \Gamma \vdash \bot
+    }
+    \]
+    
+    \bigskip
+    In every case, we can construct a classical derivation from the corresponding intuitionistic one. Hence, \( \Gamma' \vdash_{\textit{ND}} A \Rightarrow \Gamma \vdash_{\textit{KND}} A \).
+    \end{proof}
+
+
+
+
+    \bigskip
+
+  \begin{lemma}[Kolmogorov Equivalence Lemma]
+    \label{lem:equiv}
+    Let $A$ be a classical formula and $A^*$ its Kolmogorov translation. If $A^*$ is derivable in classical natural deduction, then so is $A$. That is:
+    \[
+    \text{If } \textsf{kolm}(A, A^*), \text{ and } \vdash_{\textsf{knd}} A^* \text{ then } \vdash_{\textsf{knd}} A.
+    \]
+    
+    \textbf{Proof.}  
+    By induction on the derivation of $\textsf{kolm}(A, A^*)$.
+    
+    \medskip
+
+    \noindent \textbf{Case:} $\textsf{kolm}(A, \neg\neg A)$  
+    \[
+    \infer[\text{kolm base}]{\textsf{kolm}(A, \neg\neg A)}{}
+    \]
+    By assumption, $\textsf{knd}(\neg\neg A)$ \hfill (1)\\
+    By rule $\textsf{$\neg\neg$ kE}$ on (1), we derive $\textsf{knd}(A)$.
+    
+    \medskip
+    
+    \noindent \textbf{Case:} 
+    \[
+    \infer[\text{kolm$\wedge$}]{\textsf{kolm}(A \wedge B, \neg\neg (A^* \wedge B^*))}{
+      \textsf{kolm}(A, A^*) \quad \textsf{kolm}(B, B^*)
+    }
+    \]
+    By assumption, $\textsf{knd}(\neg\neg (A^* \wedge B^*))$ \hfill (1)\\
+    By $\textsf{$\neg\neg$ kE}$ on (1), we get $\textsf{knd}(A^* \wedge B^*)$ \hfill (2)\\
+    By $\textsf{$\wedge$ kE1}$ on (2), we obtain $\textsf{knd}(A^*)$ \hfill (3)\\
+    By $\textsf{$\wedge$ kE2}$ on (2), we obtain $\textsf{knd}(B^*)$ \hfill (4)\\
+    By IH on $\textsf{kolm}(A, A^*)$ and (3), we obtain $\textsf{knd}(A)$ \hfill (5)\\
+    By IH on $\textsf{kolm}(B, B^*)$ and (4), we obtain $\textsf{knd}(B)$ \hfill (6)\\
+    By $\textsf{$\wedge$ kI}$ on (5) and (6), we derive $\textsf{knd}(A \wedge B)$.
+    
+    \medskip
+    
+    \noindent \textbf{Case:} 
+    \[
+    \infer[\text{kolm$\supset$}]{\textsf{kolm}(A \supset B, \neg\neg (A^* \supset B^*))}{
+      \textsf{kolm}(A, A^*) \quad \textsf{kolm}(B, B^*)
+    }
+    \]
+    By assumption, $\textsf{knd}(\neg\neg (A^* \supset B^*))$ \hfill (1)\\
+    By $\textsf{$\neg\neg$ kE}$ on (1), we obtain $\textsf{knd}(A^* \supset B^*)$ \hfill (2)\\
+    Assume $\textsf{knd}(A)$ [for $\supset$kI] \hfill (3)\\
+    By the Soundness Lemma on $\textsf{kolm}(A, A^*)$ and (3), we obtain $\textsf{nd}(A^*)$ \hfill (4)\\
+    By the Back-Translation Lemma on (4), we obtain $\textsf{knd}(A^*)$ \hfill (5)\\
+    Apply $\textsf{$\supset$ kE}$ to (2) and (5), we get $\textsf{knd}(B^*)$ \hfill (6)\\
+    By IH on $\textsf{kolm}(B, B^*)$ and (6), we get $\textsf{knd}(B)$ \hfill (7)\\
+    By $\textsf{$\supset$ kI}$ on assumption (3) ⟶ (7), we derive $\textsf{knd}(A \supset B)$.
+    
+    \medskip
+    
+    \noindent \textbf{Case:} 
+    \[
+    \infer[\text{kolm$\vee$}]{\textsf{kolm}(A \vee B, \neg\neg (A^* \vee B^*))}{
+      \textsf{kolm}(A, A^*) \quad \textsf{kolm}(B, B^*)
+    }
+    \]
+    By assumption, $\textsf{knd}(\neg\neg (A^* \vee B^*))$ \hfill (1)\\
+    By $\textsf{$\neg\neg$ kE}$ on (1), we get $\textsf{knd}(A^* \vee B^*)$ \hfill (2)\\
+    Perform case analysis on (2):\\
+    \quad If $\textsf{$\vee$ kIl}$ gives $\textsf{knd}(A^*)$ \hfill (3)\\
+    \quad \quad By IH on $\textsf{kolm}(A, A^*)$ and (3), we get $\textsf{knd}(A)$ \hfill (4)\\
+    \quad \quad Apply $\textsf{$\vee$ kIl}$ to (4), we obtain $\textsf{knd}(A \vee B)$\\
+    \quad If $\textsf{$\vee$ kIr}$ gives $\textsf{knd}(B^*)$ \hfill (5)\\
+    \quad \quad By IH on $\textsf{kolm}(B, B^*)$ and (5), we get $\textsf{knd}(B)$ \hfill (6)\\
+    \quad \quad Apply $\textsf{$\vee$ kIr}$ to (6), we obtain $\textsf{knd}(A \vee B)$
+    
+    \medskip
+    
+    \noindent \textbf{Case:} 
+    \[
+    \infer[\text{kolm$\neg$}]{\textsf{kolm}(\neg A, \neg\neg\neg A^*)}{
+      \textsf{kolm}(A, A^*)
+    }
+    \]
+    By assumption, $\textsf{knd}(\neg\neg\neg A^*)$ \hfill (1)\\
+    Apply $\textsf{$\neg\neg$ kE}$ on (1), we obtain $\textsf{knd}(\neg A^*)$ \hfill (2)\\
+    Assume $\textsf{knd}(A)$ [for $\neg$kI] \hfill (3)\\
+    By the Soundness Lemma on $\textsf{kolm}(A, A^*)$ and (3), we obtain $\textsf{nd}(A^*)$ \hfill (4)\\
+    By the Back-Translation Lemma on (4), we obtain $\textsf{knd}(A^*)$ \hfill (5)\\
+    Apply $\textsf{$\neg$ kE}$ on (2) and (5), we derive $\textsf{knd}(\bot)$ \hfill (6)\\
+    By $\textsf{$\neg$ kI}$ on assumption (3) ⟶ (6), we conclude $\textsf{knd}(\neg A)$
+    
+    \medskip
+    
+    \noindent \textbf{Case:} 
+    \[
+    \textsf{kolm}(\top, \neg\neg \top)
+    \]
+    By assumption, $\textsf{knd}(\neg\neg \top)$ \hfill (1)\\
+    Apply $\textsf{$\neg\neg$ kE}$ on (1), we obtain $\textsf{knd}(\top)$
+    
+    \medskip
+    
+    \noindent \textbf{Case:} 
+    \[
+    \textsf{kolm}(\bot, \neg\neg \bot)
+    \]
+    By assumption, $\textsf{knd}(\neg\neg \bot)$ \hfill (1)\\
+    Apply $\textsf{$\neg\neg$ kE}$ on (1), we obtain $\textsf{knd}(\bot)$
+    \end{lemma}
+
+    \bigskip
+
+    We now prove that if the Kolmogorov translation $A^*$ of a classical formula $A$ is provable intuitionistically, then $A$ is also classically provable. That is, Kolmogorov translation is complete with respect to classical provability.
+
+
+    \label{lem:completeness}
+    If $\textsf{nd}(A^*)$ and $\textsf{kolm}(A, A^*)$, then $\textsf{knd}(A)$.
+    
+    
+    \begin{proof}
+    By assumption, we are given:
+    \begin{itemize}
+        \item $\textsf{nd}(A^*)$ \hfill (1)
+        \item $\textsf{kolm}(A, A^*)$ \hfill (2)
+    \end{itemize}
+    
+    Apply the Back-Translation Lemma to (1), we obtain:
+    \[
+    \textsf{knd}(A^*) \hfill (3)
+    \]
+    
+    Then apply the Kolmogorov Equivalence Lemma (Lemma~\ref{lem:equiv}) to (2) and (3), yielding:
+    \[
+    \textsf{knd}(A)
+    \]
+    
+    This concludes the proof.
+    \end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\bibliographystyle{plain}  
+\bibliography{references}  
+\end{document}
+
+\end{document}
