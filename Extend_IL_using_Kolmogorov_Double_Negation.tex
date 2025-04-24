@@ -32,16 +32,19 @@
 
 
 \maketitle
-
 \section{Introduction}
 
-Kolmogorov's double-negation translation provides a powerful method for interpreting classical logic within the framework of intuitionistic logic. This translation allows classical theorems to be rephrased in a form acceptable to constructive reasoning, bridging the gap between two foundational views of logic. 
+Natural Deduction (ND) provides a foundational framework for reasoning in \textit{intuitionistic logic}, where proofs are constructed without assuming the law of excluded middle or the principle of double negation elimination. As a result, many theorems accepted in classical logic are not provable in this system. However, there exists a well-established bridge between these two systems of logic through the technique of \textit{Kolmogorov double negation translation}.
 
-Previous work by Brown~\cite{brown1998kolmogorov} presents a mechanization of this interpretation in the Twelf logical framework, including formalized translations of derivations and proofs of soundness and completeness. However, Twelf lacks certain computational expressiveness and modular reasoning capabilities that are desirable for exploring recursive proof transformations.
+The central idea of this translation is to interpret classical formulas in a way that makes them acceptable within intuitionistic logic, by systematically inserting double negations. For example, a classical formula $A$ is translated as $\neg\neg A$, and disjunctions and implications are translated accordingly to maintain validity under intuitionistic constraints.
 
-In this project, we re-implement Brown's Kolmogorov interpretation in the \textbf{Beluga} proof environment. Beluga offers native support for recursive functions over contextual objects and enables computation over LF terms and derivations. These features allow us to define translations and verify meta-theoretical properties more naturally and effectively.
+To formalize this connection, we enrich the natural deduction system with a single additional inference rule: \textit{double negation elimination}, denoted $\neg\neg E$, which allows us to derive $A$ from $\neg\neg A$. This extended system, which we denote \textbf{KND} (Kolmogorov Natural Deduction), recovers the strength of classical logic while retaining the structural elegance of natural deduction.
 
-Our work focuses on the functional translation of classical formulas and derivations, their transformation into intuitionistic proofs, and the verification of soundness and completeness within the Beluga system. Through this implementation, we aim to highlight Beluga’s strengths in mechanizing meta-theoretic reasoning about logic systems.
+In this paper, we explore the translation process in detail, show how classical derivations can be systematically represented within KND, and prove the \textit{soundness and completeness} of this translation with respect to classical logic. Our goal is to demonstrate that classical logic can be viewed as a conservative extension of intuitionistic logic, obtained by adding a controlled form of non-constructive reasoning.
+
+
+
+
 
 \section{Approach and Contribution}
 
